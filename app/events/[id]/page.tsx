@@ -125,7 +125,7 @@ export default async function EventDetailPage({ params }: EventDetailPageProps) 
           </div>
         </div>
       </div>
-      <div className="min-h-screen flex flex-col items-center justify-center px-10">
+      <div className="min-h-screen w-full flex flex-col items-center justify-center px-10">
         <h2 className="text-4xl text-white font-bold mb-10">Event Highlights</h2>
         <Carousel images={photos} />
       </div>

@@ -6,10 +6,10 @@ import SciFiCard from "../components/SciFiCard";
 import { NeuralBackground } from "../components/NeuralBackground-Red";
 import Link from "next/link";
 import { events as eventsData } from "../data/events-data";
-
 export default function EventsPage() {
   const [years, setYears] = useState<string[]>([]);
   const [selectedYear, setSelectedYear] = useState("2026");
+  
   const photos = [
     "https://images.unsplash.com/photo-1535295972055-1c762f4483e5?q=80&w=1000",
     "https://images.unsplash.com/photo-1511512578047-dfb367046420?q=80&w=1000",
@@ -40,9 +40,7 @@ export default function EventsPage() {
   return (
     <>
       <main className="relative min-h-screen bg-[#0a0a0a] text-white">
-
         <NeuralBackground />
-
         <div className="relative z-10">
 
           {/* --- HEADER --- */}

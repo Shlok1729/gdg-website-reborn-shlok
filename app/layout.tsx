@@ -1,8 +1,14 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
-// 1. Import your ThemeProvider
-import { ThemeProvider } from "./components/theme-provider"; // Ensure this path matches where you saved providers.tsx
+import { ThemeProvider } from "./components/theme-provider";
+import { FloatingDock } from "./components/floating-dock";
+import { 
+  IconHome, 
+  IconCalendarEvent, 
+  IconBriefcase, 
+  IconMessageCode 
+} from "@tabler/icons-react";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -24,13 +30,46 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  // Navigation items for the dock
+  const navItems = [
+    { 
+      title: "Home", 
+      icon: <IconHome className="h-full w-full text-neutral-500 dark:text-neutral-300" />, 
+      href: "/" 
+    },
+    { 
+      title: "About Us", 
+      icon: <IconMessageCode className="h-full w-full text-neutral-500 dark:text-neutral-300" />, 
+      href: "#" 
+    },
+    { 
+      title: "Events", 
+      icon: <IconCalendarEvent className="h-full w-full text-neutral-500 dark:text-neutral-300" />, 
+      href: "/events" 
+    },
+    { 
+      title: "Team", 
+      icon: <IconBriefcase className="h-full w-full text-neutral-500 dark:text-neutral-300" />, 
+      href: "#" 
+    },
+    { 
+      title: "Projects", 
+      icon: <IconMessageCode className="h-full w-full text-neutral-500 dark:text-neutral-300" />, 
+      href: "#" 
+    },
+  ];
+
   return (
-    // 2. Add suppressHydrationWarning to html tag to prevent errors from next-themes
     <html lang="en" suppressHydrationWarning>
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
-        {/* 3. Wrap everything in ThemeProvider with dark mode default */}
+      <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
+         <div className="fixed left-4 top-1/2 -translate-y-1/2 z-[100] pointer-events-none">
+            <div className="pointer-events-auto">
+              <FloatingDock
+                items={navItems}
+                desktopClassName="bg-black/40 backdrop-blur-lg border border-white/10 shadow-2xl"
+              />
+            </div>
+          </div>
         <ThemeProvider
           attribute="class"
           defaultTheme="dark"
