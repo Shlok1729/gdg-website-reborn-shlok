@@ -5,21 +5,25 @@ import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
-import { X } from "lucide-react"; // Import X icon for Close button
+import { X } from "lucide-react"; 
 import navlinks from "./navlinks";
 import { cn } from "../../lib/utils";
 import { ThemeSwitcher } from "../common/theme-switcher";
 
-// Social Icons - You can replace these with actual icons if available in your lib
+// Social Icons
 import { IconBrandInstagram, IconBrandTwitter, IconBrandFacebook, IconBrandMedium, IconBrandGithub, IconBrandYoutube } from "@tabler/icons-react";
 import { Button } from "../ui/button";
-
 
 export const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
-  
-  // Handle scroll detection with standard React hooks to avoid Turbopack issues
+  const pathname = usePathname(); // Get current path
+
+  // Define routes where the ThemeSwitcher should be hidden
+  const hiddenRoutes = ["/abyss", "/events/abyss"]; 
+  const showThemeSwitcher = !hiddenRoutes.some(route => pathname?.includes(route));
+
+  // Handle scroll detection
   useEffect(() => {
     const handleScroll = () => {
       if (window.scrollY > 50) {
@@ -51,31 +55,30 @@ export const Navbar = () => {
           y: scrolled ? 20 : 0,
           width: scrolled ? "60%" : "100%",
           borderRadius: scrolled ? "50px" : "0px",
-          backgroundColor: scrolled ? "rgba(0, 0, 0, 0.1)" : "transparent", // Slight dark tint for visibility
+          backgroundColor: scrolled ? "rgba(0, 0, 0, 0.1)" : "transparent",
           backdropFilter: scrolled ? "blur(10px)" : "none",
           border: scrolled ? "1px solid rgba(255, 255, 255, 0.1)" : "1px solid transparent",
         }}
         transition={{ duration: 0.3, ease: "easeInOut" }}
         className={cn(
           "fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-6 py-4 md:px-12 mx-auto",
-          scrolled && "shadow-lg bg-card/10" // Enhance visibility on scroll
+          scrolled && "shadow-lg bg-card/10"
         )}
-        style={{ maxWidth: "1600px" }} // Ensure it doesn't get too wide on clear state
+        style={{ maxWidth: "1600px" }}
       >
         {/* Left Side: Logo + Brand Name */}
         <Link href="/" className="pointer-events-auto flex items-center gap-4 group">
           <div className="relative w-10 h-10">
-             {/* Using the asset found in public/assets/gdg_logo.gif */}
              <Image 
                src="/assets/gdgLogo.gif" 
                alt="GDG Logo" 
                fill
-               className="object-contain" // Keep aspect ratio
+               className="object-contain"
              />
           </div>
           <div className={cn(
             "border bg-card/50 backdrop-blur-md rounded-full px-4 py-1.5 transition-colors",
-            scrolled && "bg-transparent border-transparent" // Hide capsule style when navbar itself is a capsule? Optional. Leaving as is for now feels safer.
+            scrolled && "bg-transparent border-transparent"
           )}>
             <span className="text-foreground font-medium text-sm tracking-wide">
               GDG-NITH
@@ -99,13 +102,15 @@ export const Navbar = () => {
 
         {/* Right Side: Menu Button & Theme Switcher */}
         <div className="flex items-center gap-2 pointer-events-auto">
-           <ThemeSwitcher />
+           {/* CONDITIONAL RENDERING: Only show switcher if not on hidden routes */}
+           {showThemeSwitcher && <ThemeSwitcher />}
+           
            <button 
              onClick={() => setIsOpen(true)}
              className={cn(
                "border bg-white/50 dark:bg-black/50 backdrop-blur-md text-black dark:text-white px-6 py-2 rounded-full font-medium transition-all duration-300",
                "border-neutral-200 dark:border-white/20 hover:bg-black hover:text-white dark:hover:bg-white dark:hover:text-black",
-               scrolled && "border-transparent bg-transparent px-2" // Minimalist button on scroll
+               scrolled && "border-transparent bg-transparent px-2"
              )}
            >
              Menu
@@ -142,7 +147,6 @@ export const Navbar = () => {
                </div>
 
                <div className="flex items-center gap-4">
-                  {/* Close button gets same styling as Menu button */}
                   <Button 
                     onClick={() => setIsOpen(false)}
                     size="lg"
@@ -189,7 +193,7 @@ export const Navbar = () => {
                 })}
               </div>
 
-              {/* Right Column: Info & Socials (Hidden on small mobile if needed, or stacked) */}
+              {/* Right Column: Info & Socials */}
               <div className="flex-1 flex flex-col justify-center items-start md:items-end mt-12 md:mt-0 text-left md:text-right">
                 
                 <motion.div
@@ -212,7 +216,6 @@ export const Navbar = () => {
                    transition={{ delay: 0.5 }}
                    className="flex gap-4"
                 >
-                  {/* Social Icons Placeholder */}
                    <SocialLink href="#" icon={<IconBrandInstagram className="w-6 h-6" />} />
                    <SocialLink href="#" icon={<IconBrandTwitter className="w-6 h-6" />} />
                    <SocialLink href="#" icon={<IconBrandGithub className="w-6 h-6" />} />
@@ -240,8 +243,7 @@ const SocialLink = ({ href, icon }: { href: string; icon: React.ReactNode }) => 
   );
 };
 
-// Exporting these as empty components to prevent breaking existing imports in other files if any
-// But optimally we should remove their usage.
+// Placeholder Exports
 export const NavBody = ({ children }: { children: React.ReactNode }) => <>{children}</>;
 export const NavItems = ({ items }: { items: any[] }) => <></>;
-export const MobileNav = () => <></>; // Placeholder
+export const MobileNav = () => <></>;
