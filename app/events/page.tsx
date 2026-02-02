@@ -40,7 +40,6 @@ export default function EventsPage() {
   return (
     <>
       <main className="relative min-h-screen bg-[#0a0a0a] text-white">
-        <NeuralBackground />
         <div className="relative z-10">
 
           {/* --- HEADER --- */}
