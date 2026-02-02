@@ -8,14 +8,31 @@ import { motion, AnimatePresence } from "framer-motion";
 import { X } from "lucide-react"; // Import X icon for Close button
 import navlinks from "./navlinks";
 import { cn } from "../../lib/utils";
+import { ThemeSwitcher } from "../common/theme-switcher";
 
 // Social Icons - You can replace these with actual icons if available in your lib
 import { IconBrandInstagram, IconBrandTwitter, IconBrandFacebook, IconBrandMedium, IconBrandGithub, IconBrandYoutube } from "@tabler/icons-react";
+import { Button } from "../ui/button";
 
 
 export const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
   
+  // Handle scroll detection with standard React hooks to avoid Turbopack issues
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 50) {
+        setScrolled(true);
+      } else {
+        setScrolled(false);
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
   // Prevent scrolling when menu is open
   useEffect(() => {
     if (isOpen) {
@@ -30,8 +47,20 @@ export const Navbar = () => {
       {/* Top Navbar Strip */}
       <motion.div 
         initial={{ y: -100 }}
-        animate={{ y: 0 }}
-        className="fixed top-0 inset-x-0 z-50 flex items-center justify-between px-6 py-6 md:px-12 pointer-events-none"
+        animate={{ 
+          y: scrolled ? 20 : 0,
+          width: scrolled ? "60%" : "100%",
+          borderRadius: scrolled ? "50px" : "0px",
+          backgroundColor: scrolled ? "rgba(0, 0, 0, 0.1)" : "transparent", // Slight dark tint for visibility
+          backdropFilter: scrolled ? "blur(10px)" : "none",
+          border: scrolled ? "1px solid rgba(255, 255, 255, 0.1)" : "1px solid transparent",
+        }}
+        transition={{ duration: 0.3, ease: "easeInOut" }}
+        className={cn(
+          "fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-6 py-4 md:px-12 mx-auto",
+          scrolled && "shadow-lg bg-card/10" // Enhance visibility on scroll
+        )}
+        style={{ maxWidth: "1600px" }} // Ensure it doesn't get too wide on clear state
       >
         {/* Left Side: Logo + Brand Name */}
         <Link href="/" className="pointer-events-auto flex items-center gap-4 group">
@@ -44,30 +73,44 @@ export const Navbar = () => {
                className="object-contain" // Keep aspect ratio
              />
           </div>
-          <div className="border border-neutral-700 bg-black/50 backdrop-blur-md dark:border-neutral-700 rounded-full px-4 py-1.5 transition-colors group-hover:bg-neutral-900/80">
-            <span className="text-white font-medium text-sm tracking-wide">
+          <div className={cn(
+            "border bg-card/50 backdrop-blur-md rounded-full px-4 py-1.5 transition-colors",
+            scrolled && "bg-transparent border-transparent" // Hide capsule style when navbar itself is a capsule? Optional. Leaving as is for now feels safer.
+          )}>
+            <span className="text-foreground font-medium text-sm tracking-wide">
               GDG-NITH
             </span>
           </div>
         </Link>
 
         {/* Center: Social Icons (Hidden on mobile) */}
-        <div className="hidden md:flex absolute left-1/2 -translate-x-1/2 pointer-events-auto gap-4">
-           {/* Reusing SocialLink but slightly smaller or just icons */}
-           <a href="#" className="text-white/70 hover:text-white transition-colors"><IconBrandInstagram className="w-5 h-5" /></a>
-           <a href="#" className="text-white/70 hover:text-white transition-colors"><IconBrandTwitter className="w-5 h-5" /></a>
-           <a href="#" className="text-white/70 hover:text-white transition-colors"><IconBrandGithub className="w-5 h-5" /></a>
-           <a href="#" className="text-white/70 hover:text-white transition-colors"><IconBrandYoutube className="w-5 h-5" /></a>
-           <a href="#" className="text-white/70 hover:text-white transition-colors"><IconBrandMedium className="w-5 h-5" /></a>
-        </div>
-
-        {/* Right Side: Menu Button */}
-        <button 
-          onClick={() => setIsOpen(true)}
-          className="pointer-events-auto border border-white/20 bg-black/50 backdrop-blur-md text-white px-6 py-2 rounded-full font-medium hover:bg-white hover:text-black transition-all duration-300"
+        <motion.div 
+          animate={{ opacity: 1, scale: 1 }} 
+          className="hidden md:flex absolute left-1/2 -translate-x-1/2 pointer-events-auto gap-4"
         >
-          Menu
-        </button>
+             <>
+               <a href="#" className="text-black/70 dark:text-white/70 hover:text-black dark:hover:text-white transition-colors"><IconBrandInstagram className="w-5 h-5" /></a>
+               <a href="#" className="text-black/70 dark:text-white/70 hover:text-black dark:hover:text-white transition-colors"><IconBrandTwitter className="w-5 h-5" /></a>
+               <a href="#" className="text-black/70 dark:text-white/70 hover:text-black dark:hover:text-white transition-colors"><IconBrandGithub className="w-5 h-5" /></a>
+               <a href="#" className="text-black/70 dark:text-white/70 hover:text-black dark:hover:text-white transition-colors"><IconBrandYoutube className="w-5 h-5" /></a>
+               <a href="#" className="text-black/70 dark:text-white/70 hover:text-black dark:hover:text-white transition-colors"><IconBrandMedium className="w-5 h-5" /></a>
+             </>
+        </motion.div>
+
+        {/* Right Side: Menu Button & Theme Switcher */}
+        <div className="flex items-center gap-2 pointer-events-auto">
+           <ThemeSwitcher />
+           <button 
+             onClick={() => setIsOpen(true)}
+             className={cn(
+               "border bg-white/50 dark:bg-black/50 backdrop-blur-md text-black dark:text-white px-6 py-2 rounded-full font-medium transition-all duration-300",
+               "border-neutral-200 dark:border-white/20 hover:bg-black hover:text-white dark:hover:bg-white dark:hover:text-black",
+               scrolled && "border-transparent bg-transparent px-2" // Minimalist button on scroll
+             )}
+           >
+             Menu
+           </button>
+        </div>
       </motion.div>
 
       {/* Full Screen Overlay */}
@@ -92,18 +135,23 @@ export const Navbar = () => {
                      />
                   </div>
                    <div className="border border-white/20 rounded-full px-4 py-1.5">
-                    <span className="text-white font-medium text-sm tracking-wide">
+                     <span className="text-white font-medium text-sm tracking-wide">
                       GDG-NITH
                     </span>
                   </div>
                </div>
 
-               <button 
-                  onClick={() => setIsOpen(false)}
-                  className="border border-white/20 text-white px-6 py-2 rounded-full font-medium hover:bg-white hover:text-black transition-all duration-300 flex items-center gap-2"
-                >
-                  Close
-                </button>
+               <div className="flex items-center gap-4">
+                  {/* Close button gets same styling as Menu button */}
+                  <Button 
+                    onClick={() => setIsOpen(false)}
+                    size="lg"
+                    variant="ghost"
+                    className="rounded-full bg-white text-neutral-800"
+                        >
+                    Close
+                  </Button>
+               </div>
             </div>
 
             {/* Content Container */}

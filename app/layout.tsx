@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
 import { Provider } from "./provider";
+import { Navbar } from "./components/navbar/navbar";
 
 const productSans = localFont({
   src: [
@@ -48,6 +49,7 @@ export default function RootLayout({
     <html lang="en" className={productSans.variable} suppressHydrationWarning>
       <body className="font-sans antialiased">
         <Provider>
+          <Navbar />
           {children}
         </Provider>
       </body>

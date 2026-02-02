@@ -29,10 +29,9 @@ export function Provider({ children }: { children: React.ReactNode }) {
       />
       <NextThemesProvider
         themes={all_themes as unknown as string[]}
-        defaultTheme="dark"
-        forcedTheme="dark"
+        defaultTheme="system"
+        enableSystem
         attribute="class"
-        enableSystem={false}
       >
         <div
           aria-hidden="true"

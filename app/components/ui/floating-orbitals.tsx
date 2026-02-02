@@ -7,7 +7,7 @@ export const OrbitingGraphic = () => {
     rotate: [0, 180, 180, 360],
   };
 
-  const orbitTransition = {
+  const orbitTransition: any = {
     duration: 3,
     repeat: Infinity,
     ease: ["easeInOut"],

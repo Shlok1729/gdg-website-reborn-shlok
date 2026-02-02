@@ -1,5 +1,5 @@
 import Footer from "../components/footer";
-import Navbar from "../components/navbar/navbar";
+import { Navbar } from "../components/navbar/navbar";
 import { NeuralBackground } from "../components/NeuralBackground-Blue";
 
 export default function AboutPage() {

@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
 import { appConfig } from "@/app/project.config";
-import { Icon, type IconType } from "@/app/components/icons/icon";
+import { Icon, type IconType } from "@/app/components/icons/icon-component";
 
 // Animation variants for the container (staggering the children)
 const menuVars = {

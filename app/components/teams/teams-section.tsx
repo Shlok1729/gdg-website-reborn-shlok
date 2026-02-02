@@ -22,11 +22,11 @@ const teamMembers = [...baseTeamMembers, ...baseTeamMembers, ...baseTeamMembers,
 
 export const TeamsSection = () => {
   return (
-    <section className="py-24 bg-zinc-900 overflow-hidden relative">
+    <section className="py-24 bg-white dark:bg-zinc-900 overflow-hidden relative transition-colors duration-300">
       <div className="container mx-auto px-6 mb-12 flex flex-col items-center text-center gap-6">
           <Link 
-            href="/teams"
-            className="flex items-center gap-2 px-4 py-2 rounded-full border border-neutral-800 bg-neutral-900/50 backdrop-blur-sm text-neutral-300 hover:text-white hover:border-neutral-700 transition-all group"
+            href="/team"
+            className="flex items-center gap-2 px-4 py-2 rounded-full border border-neutral-200 dark:border-neutral-800 bg-white/50 dark:bg-neutral-900/50 backdrop-blur-sm text-neutral-600 dark:text-neutral-300 hover:text-black dark:hover:text-white hover:border-neutral-400 dark:hover:border-neutral-700 transition-all group"
           >
             <img src="/assets/gemini-color.png" alt="Gemini" className="w-4 h-4" />
             <span className="text-sm font-medium">Our Team</span>
@@ -37,14 +37,14 @@ export const TeamsSection = () => {
           </Link>
 
           <div className="relative inline-block mt-4">
-            <h2 className="text-3xl md:text-5xl font-black text-neutral-200 tracking-tighter mb-2 relative z-10">
+            <h2 className="text-3xl md:text-5xl font-black text-neutral-900 dark:text-neutral-200 tracking-tighter mb-2 relative z-10">
                 Meet the Team
             </h2>
             {/* Yellow underline */}
             <div className="absolute -bottom-2 left-0 right-0 h-2 bg-[#FBBC05] rounded-sm opacity-80"></div>
           </div>
           
-          <p className="text-neutral-400 max-w-lg text-lg">
+          <p className="text-neutral-600 dark:text-neutral-400 max-w-lg text-lg">
               The creative minds behind the GDG NITH.
           </p>
       </div>

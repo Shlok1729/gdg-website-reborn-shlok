@@ -93,7 +93,11 @@ function ProjectsContent() {
                     transition={{ type: "spring", stiffness: 100, damping: 20 }}
                     className="absolute cursor-pointer" onClick={() => isCenter ? setIsExpanded(true) : setActiveIndex(index)}>
                     <div className="w-[100px] md:w-[550px]">
-                      <SciFiProjectCard project={project} borderColor={GOOGLE_COLORS[index % 4]} />
+                      <SciFiProjectCard 
+                        title={project.title} 
+                        bgImageSrc={project.thumbnail}
+                        themeColor={GOOGLE_COLORS[index % 4]} 
+                      />
                     </div>
                   </motion.div>
                 );
@@ -180,7 +184,11 @@ function ProjectsContent() {
               transition={{ type: "spring", stiffness: 150, damping: 15 }} className="w-[90vw] h-[80vh] flex overflow-hidden rounded-[40px] border border-white/10 shadow-2xl relative" onClick={(e) => e.stopPropagation()}>
               <div className="w-1/2 h-full bg-zinc-950 flex items-center justify-center relative border-r border-white/5">
                 <div className="scale-150 pointer-events-none">
-                  <SciFiProjectCard project={current} borderColor={currentColor} />
+                  <SciFiProjectCard 
+                    title={current.title} 
+                    bgImageSrc={current.thumbnail}
+                    themeColor={currentColor} 
+                  />
                 </div>
               </div>
               <div className="w-1/2 h-full bg-white/[0.03] backdrop-blur-[80px] p-20 flex flex-col justify-center relative">
