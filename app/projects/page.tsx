@@ -18,7 +18,7 @@ const MOCK_PROJECTS = [
   { _id: "4", title: "CRAWLER 4", thumbnail: "/portal.png", description: "GATEWAY_ACTIVE: User interface portal for NIT Hamirpur developers. Repository access granted." },
   { _id: "5", title: "CRAWLER 5", thumbnail: "/market.png", description: "MARKET_WARS: Real-time scarcity market simulator built for GDG tech fests." },
 ];
-
+// add pictures here 
 const MOCK_DOMAINS = [
   { domain: "Web Development", img: "/web-dev.png", side: -200, color: "border-blue-500", desc: "Crafting high-performance web architectures using MERN and Next.js." },
   { domain: "App Development", img: "/app-dev.png", side: 200, color: "border-red-500", desc: "Native and cross-platform solutions using Flutter and Firebase." },
@@ -111,7 +111,7 @@ function ProjectsContent() {
         <section className="relative w-full py-32 bg-transparent">
           <div className="max-w-7xl mx-auto px-6 space-y-20">
             <header className="space-y-4 text-center md:text-left">
-              <h2 className="text-6xl font-black uppercase tracking-tighter italic">Domains</h2>
+              <h2 className="text-6xl font-black uppercase tracking-tighter italic">OUR Domains</h2>
               <p className="text-zinc-500 font-mono text-sm uppercase tracking-widest">
                  <span className="text-blue-500">  </span>
               </p>
