@@ -1,12 +1,14 @@
 import Footer from "../components/footer";
-import Navbar from "../components/navbar/navbar";
-import TeamSelector from "../components/teams/TeamSelector";
 
 export default function TeamsPage() {
   return (
     <>
-      <Navbar />
-      <TeamSelector />
+      <div className="min-h-screen flex items-center justify-center bg-background">
+        <div className="text-center">
+          <h1 className="text-4xl font-bold mb-4">Team Page</h1>
+          <p className="text-muted-foreground">Coming soon...</p>
+        </div>
+      </div>
       <footer>
         <Footer />
       </footer>

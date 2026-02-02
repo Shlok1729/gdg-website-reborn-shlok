@@ -70,7 +70,8 @@ const config: Config = {
         sm: "calc(var(--radius) - 4px)",
       },
       fontFamily: {
-        orbitron: ['var(--font-orbitron)'], // If you set up fonts in layout.tsx
+        sans: ['var(--font-sans)', 'system-ui', 'sans-serif'],
+        orbitron: ['var(--font-orbitron)'],
         exo: ['var(--font-exo)'],
       },
       // 4. Custom Animations (for the blinking cursor or other effects)

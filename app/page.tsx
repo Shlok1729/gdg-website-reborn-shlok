@@ -1,13 +1,14 @@
 
 import Footer from "./components/footer";
 import SectionOne from "./components/home/sections/section-one";
-import Navbar from "./components/navbar/navbar";
+import { AboutScrollSection } from "./components/about/about-scroll-section";
+
 export default function Home() {
   return (
     <div>
-      <Navbar />
       <main>
         <SectionOne />
+        <AboutScrollSection />
       </main>
       <footer>
         <Footer />

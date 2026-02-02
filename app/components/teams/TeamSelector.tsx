@@ -2,7 +2,15 @@
 
 import type React from "react";
 import { useState } from "react";
+import { motion } from "framer-motion";
+import { useGlitch } from "react-powerglitch";
+import localFont from "next/font/local";
 import ProfileCard from "./ProfileCard";
+
+const Hacked_KerX = localFont({
+  src: "../../../public/fonts/Hacked-KerX.ttf",
+  variable: "--custom-font",
+});
 
 interface TeamMember {
   image: string;
@@ -10,6 +18,8 @@ interface TeamMember {
   position: string;
   category: string;
   year: string;
+  github?: string;
+  linkedin?: string;
 }
 
 const teamMembers: TeamMember[] = [
@@ -189,105 +199,49 @@ const teamMembers: TeamMember[] = [
     year: "Year 3",
   },
   {
-    image: "https://via.placeholder.com/150",
+    image: "",
     name: "Zane Black",
     position: "AI/ML Team Lead",
     category: "AI/ML Team",
-    year: "Year 2",
+    year: "Year 1",
   },
 ];
 
 const categories = [
   "All",
-  "Web Team",
-  "AI/ML Team",
-  "UI/UX Team",
-  "Android Team",
+  "Year 1",
+  "Year 2",
+  "Year 3",
+  "Year 4",
 ];
 
-interface PaginationProps {
-  currentPage: number;
-  totalItems: number;
-  itemsPerPage: number;
-  onPageChange: (page: number) => void;
-}
-
-const Pagination: React.FC<PaginationProps> = ({
-  currentPage,
-  totalItems,
-  itemsPerPage,
-  onPageChange,
-}) => {
-  const totalPages = Math.ceil(totalItems / itemsPerPage);
-
-  return (
-    <div className="flex justify-center mt-6">
-      <button
-        onClick={() => onPageChange(currentPage - 1)}
-        disabled={currentPage === 1}
-        className={`px-4 py-2 mx-1 rounded-lg ${
-          currentPage === 1
-            ? "bg-neutral-300 text-neutral-500 cursor-not-allowed"
-            : "bg-orange-500 text-white"
-        }`}
-      >
-        Previous
-      </button>
-      {Array.from({ length: totalPages }, (_, index) => (
-        <button
-          key={index}
-          onClick={() => onPageChange(index + 1)}
-          className={`px-4 py-2 mx-1 rounded-lg ${
-            currentPage === index + 1
-              ? "bg-orange-500 text-white"
-              : "bg-white text-black border border-neutral-300 hover:bg-neutral-200"
-          }`}
-        >
-          {index + 1}
-        </button>
-      ))}
-      <button
-        onClick={() => onPageChange(currentPage + 1)}
-        disabled={currentPage === totalPages}
-        className={`px-4 py-2 mx-1 rounded-lg ${
-          currentPage === totalPages
-            ? "bg-neutral-300 text-neutral-500 cursor-not-allowed"
-            : "bg-orange-500 text-white"
-        }`}
-      >
-        Next
-      </button>
-    </div>
-  );
-};
-
 const TeamSelector: React.FC = () => {
+  const glitch = useGlitch({
+    timing: {
+      duration: 3950,
+    },
+    shake: false,
+  });
   const [selectedCategory, setSelectedCategory] = useState<string>("All");
-  const [currentPage, setCurrentPage] = useState<number>(1);
-  const itemsPerPage = 10;
+
+  // Year order for sorting
+  const yearOrder = { "Year 4": 1, "Year 3": 2, "Year 2": 3, "Year 1": 4 };
 
   const filteredTeamMembers =
     selectedCategory === "All"
-      ? teamMembers
-      : teamMembers.filter(
-          (member) =>
-            member.category === selectedCategory ||
-            member.year === selectedCategory
-        );
-
-  const paginatedTeamMembers = filteredTeamMembers.slice(
-    (currentPage - 1) * itemsPerPage,
-    currentPage * itemsPerPage
-  );
-
-  const totalItems = filteredTeamMembers.length;
+      ? [...teamMembers].sort((a, b) => (yearOrder[a.year as keyof typeof yearOrder] || 5) - (yearOrder[b.year as keyof typeof yearOrder] || 5))
+      : teamMembers
+          .filter((member) => member.year === selectedCategory)
+          .sort((a, b) => (yearOrder[a.year as keyof typeof yearOrder] || 5) - (yearOrder[b.year as keyof typeof yearOrder] || 5));
 
   return (
     <div className="bg-neutral-100 dark:bg-neutral-900 min-h-screen p-8">
-      <h1 className="text-4xl sm:text-6xl font-extrabold text-center mb-6 animate-fadeInUp relative group">
+      <h1 className={`text-4xl sm:text-6xl font-extrabold text-center mb-6 animate-fadeInUp relative group ${Hacked_KerX.className}`}>
         <span className="text-neutral-800 dark:text-white">Meet Our</span>{" "}
-        <span className="text-orange-500">Team</span>
-        <span className="absolute left-0 top-full w-full h-1 bg-gradient-to-r from-orange-400 to-orange-600 scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left" />
+        <span ref={glitch.ref} className="text-red-800 dark:text-red-700 inline-block">
+          Team
+        </span>
+        <span className="absolute left-0 top-full w-full h-1 bg-gradient-to-r from-red-700 to-red-900 scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left" />
       </h1>
 
       {/* Category Selector */}
@@ -297,11 +251,10 @@ const TeamSelector: React.FC = () => {
             key={category}
             onClick={() => {
               setSelectedCategory(category);
-              setCurrentPage(1);
             }}
             className={`px-4 py-2 rounded-lg text-sm font-medium transition-all duration-300 ${
               selectedCategory === category
-                ? "bg-orange-500 text-white"
+                ? "bg-red-800 text-white"
                 : "bg-white text-black border border-neutral-300 dark:bg-neutral-800 dark:text-white dark:border-neutral-700 hover:bg-neutral-200 dark:hover:bg-neutral-700"
             }`}
           >
@@ -311,17 +264,20 @@ const TeamSelector: React.FC = () => {
       </div>
 
       {/* Team Members Display */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-8">
-        {paginatedTeamMembers.map((member, index) => (
-          <ProfileCard
-            key={index}
-            image={member.image}
-            name={member.name}
-            position={member.position}
-            category={member.category}
-            year={member.year}
-          />
-        ))}
+      <div className="flex justify-center">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8 max-w-full">
+          {filteredTeamMembers.map((member, index) => (
+            <div key={index} className="flex justify-center">
+              <ProfileCard
+                image={member.image}
+                name={member.name}
+                position={member.position}
+                category={member.category}
+                year={member.year}
+              />
+            </div>
+          ))}
+        </div>
       </div>
 
       {/* No Results Message */}
@@ -329,16 +285,6 @@ const TeamSelector: React.FC = () => {
         <p className="text-center text-neutral-500 dark:text-neutral-400 text-lg mt-6">
           No team members found in this category.
         </p>
-      )}
-
-      {/* Pagination Component */}
-      {filteredTeamMembers.length > itemsPerPage && (
-        <Pagination
-          currentPage={currentPage}
-          totalItems={totalItems}
-          itemsPerPage={itemsPerPage}
-          onPageChange={setCurrentPage}
-        />
       )}
     </div>
   );

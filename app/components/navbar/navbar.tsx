@@ -1,102 +1,124 @@
 "use client";
-import Link from "next/link";
-import navlinks, { LINKS_GROUP_ONE_COUNT } from "./navlinks";
-import Image from "next/image";
-import { motion } from "framer-motion";
-import NavbarButton from "./navbar-button";
-import { useTheme } from "next-themes";
-import { Menu, Moon, Sun } from "lucide-react";
+import { useState } from "react";
+import { ThemeSwitcher } from "../common/theme-switcher";
+import { appConfig } from "@/app/project.config";
 import { Button } from "../ui/button";
-import { useState, useEffect } from "react"; // Import useEffect
-import Sidebar from "./sidebar";
+import { NavbarLeft } from "./navbar-left";
+import { MobileMenu } from "./mobile-menu";
+import { ButtonLink } from "../utils/button-link";
+import { Icon, type IconType } from "../icons/icon";
+import {
+  Navbar,
+  NavBody,
+  NavItems,
+  MobileNav,
+  MobileNavHeader,
+  MobileNavMenu,
+  MobileNavToggle,
+} from "./resizable-navbar";
 
-export default function Navbar() {
-  // 1. Destructure resolvedTheme
-  const { setTheme, theme, resolvedTheme } = useTheme();
-  const [showSidebar, setShowSidebar] = useState<boolean>(false);
-  
-  // 2. Add mounted state to prevent hydration errors
-  const [mounted, setMounted] = useState(false);
-
-  // When component mounts on client, set mounted to true
-  useEffect(() => {
-    setMounted(true);
-  }, []);
-
-  const linkVariants = {
-    hidden: { opacity: 0, y: -20 },
-    visible: { opacity: 1, y: 0 },
-  };
-
-  const containerVariants = {
-    hidden: {},
-    visible: {
-      transition: {
-        staggerChildren: 0.1,
-      },
-    },
-  };
-
-  const toggleSidebar = () => {
-    setShowSidebar((prev) => !prev);
-  };
+export default function MainNavbar() {
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   return (
-    <motion.div
-      className="sticky top-0 left-0 right-0 flex h-12 justify-between items-center px-4 py-8 bg-white dark:bg-neutral-900 border-b-2 border-b-neutral-100 dark:border-b-neutral-800 z-50"
-      initial="hidden"
-      animate="visible"
-      variants={containerVariants}
-    >
-      <Link href="/" className="flex flex-row items-end gap-2 cursor-pointer">
-        <div className="flex flex-row items-end gap-2">
-          <Image
-            className="w-8"
-            src="/knight.png"
-            alt="logo"
-            width={800}
-            height={800}
+    <Navbar>
+      {/* Desktop Navigation */}
+      <NavBody>
+        <NavbarLeft
+          logo={appConfig.clubLogo}
+          badgeText={appConfig.shortName}
+          href="/"
+        />
+
+        {/* Middle section: Social Media Links */}
+        <div className="hidden lg:flex items-center gap-3 absolute left-1/2 transform -translate-x-1/2">
+          {appConfig?.socialLinks &&
+            Object.entries(appConfig?.socialLinks).map(([key, value]) => {
+              if (!value) return null;
+              return (
+                <ButtonLink
+                  key={key}
+                  variant="ghost"
+                  size="icon_sm"
+                  href={value}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  title={key}
+                >
+                  <Icon name={key as IconType} className="h-5 w-5" />
+                </ButtonLink>
+              );
+            })}
+        </div>
+
+        {/* Right section: Theme Switcher + Menu */}
+        <div className="flex items-center gap-2">
+          <ThemeSwitcher />
+          <MobileMenu />
+        </div>
+      </NavBody>
+
+      {/* Mobile Navigation */}
+      <MobileNav>
+        <MobileNavHeader>
+          <NavbarLeft
+            logo={appConfig.clubLogo}
+            badgeText={appConfig.shortName}
+            href="/"
           />
-          <span className="font-Exo font-medium text-lg text-neutral-700 dark:text-neutral-300">
-            DEVELOPERS CLUB
-          </span>
-        </div>
-      </Link>
-      <div className="lg:flex items-center hidden flex-row gap-4">
-        {navlinks.slice(0, LINKS_GROUP_ONE_COUNT).map((link) => (
-          <motion.div key={link.text} variants={linkVariants}>
-            <NavbarButton text={link.text} to={link.to} />
-          </motion.div>
-        ))}
-        
-        <div className="cursor-pointer">
-          {/* 3. Only render the toggle if mounted to avoid server/client mismatch */}
-          {mounted && (
-            // 4. Use resolvedTheme to check actual visual state (handles 'system' setting)
-            resolvedTheme === "dark" ? (
-              <Button
-                size="icon"
-                className="border border-white rounded-full bg-white text-neutral-900 hover:bg-white shadow-none"
-                onClick={() => setTheme("light")}
-              >
-                <Sun size={18} />
-              </Button>
-            ) : (
-              <Button
-                size="icon"
-                className="border border-neutral-300 text-white shadow-none bg-neutral-900 hover:bg-neutral-900 rounded-full"
-                onClick={() => setTheme("dark")}
-              >
-                <Moon size={18} />
-              </Button>
-            )
-          )}
-        </div>
-      </div>
-      <div className="flex flex-col lg:hidden">
-        <Menu className="cursor-pointer" onClick={toggleSidebar} />
-      </div>
-      {showSidebar && <Sidebar isOpen={showSidebar} onClose={toggleSidebar} />}
-    </motion.div>
+          <div className="flex items-center gap-2">
+            <ThemeSwitcher />
+            <MobileNavToggle
+              isOpen={isMobileMenuOpen}
+              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+            />
+          </div>
+        </MobileNavHeader>
+
+        <MobileNavMenu
+          isOpen={isMobileMenuOpen}
+          onClose={() => setIsMobileMenuOpen(false)}
+        >
+          {/* Mobile Social Links */}
+          <div className="flex flex-col gap-2 mb-4 pb-4 border-b">
+            <span className="text-xs font-semibold text-muted-foreground uppercase tracking-wide">
+              Follow Us
+            </span>
+            {appConfig?.socialLinks &&
+              Object.entries(appConfig?.socialLinks).map(([key, value]) => {
+                if (!value) return null;
+                return (
+                  <ButtonLink
+                    key={key}
+                    variant="outline"
+                    href={value}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="w-full justify-start gap-2 capitalize"
+                  >
+                    <Icon name={key as IconType} className="h-4 w-4" />
+                    {key}
+                  </ButtonLink>
+                );
+              })}
+          </div>
+
+          {/* Mobile Nav Links */}
+          {appConfig.navLinks.map((item) => (
+            <Button
+              key={item.title}
+              variant="ghost"
+              asChild
+              className="w-full justify-start"
+              onClick={() => setIsMobileMenuOpen(false)}
+            >
+              <a href={item.type === "link" ? item.href : "#"}>
+                {item.title}
+              </a>
+            </Button>
+          ))}
+        </MobileNavMenu>
+      </MobileNav>
+    </Navbar>
   );
 }
