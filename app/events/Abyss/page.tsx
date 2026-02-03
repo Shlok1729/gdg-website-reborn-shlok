@@ -5,6 +5,7 @@ import Head from 'next/head';
 import { motion, useInView } from "motion/react";
 import localFont from 'next/font/local';
 import TiltedCard from './TiltedCard';
+import Image from 'next/image';
 
 // --- Font Configuration ---
 const geizer = localFont({
@@ -429,14 +430,13 @@ export default function AbyssEventPage() {
         }
       `}} />
 
-      {/* REMOVED: The fixed/sticky top bar div has been deleted entirely */}
 
-      {/* HERO SECTION */}
-      <header className="relative w-full h-[100dvh] flex flex-col items-center justify-center overflow-hidden">
+      <header className="relative w-full h-dvh flex flex-col items-center justify-center overflow-hidden">
 
-        {/* Background Image Container */}
         <div className="absolute inset-0 z-0">
-          <img
+          <Image
+            height={1080}
+            width={1920}
             src="/abyss.png"
             alt="Post-apocalyptic city"
             className="w-full h-full object-cover object-center"

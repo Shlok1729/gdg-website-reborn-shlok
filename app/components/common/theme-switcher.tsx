@@ -54,7 +54,7 @@ export const ThemeSwitcher = ({ onChange, className }: ThemeSwitcherProps) => {
     <div className={cn("relative", className)}>
       <DropdownMenu>
         <DropdownMenuTrigger asChild>
-          <Button variant="outline" size="icon" className="rounded-full">
+          <Button variant="outline" size="icon_sm" className="rounded-full">
             {CurrentTheme ? (
               <CurrentTheme.Icon className="size-4 absolute inset-0 m-auto" />
             ) : (
