@@ -6,6 +6,8 @@ import Link from "next/link";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { Linkedin, Instagram, Twitter, Github } from "lucide-react";
 import TapeSection from "./home/sections/TapeSection";
+import { ApplicationInfo } from "./logo";
+
 
 const lists = {
   "ABOUT US": [
@@ -44,19 +46,12 @@ export default function Footer() {
             <div className="md:col-span-5 flex flex-col gap-6">
               <Link href="/" className="group flex items-center gap-4 w-fit">
                 <div className="relative w-10 h-8">
-                  <Image
-                    src="/assets/gdsc_logo.gif"
-                    alt="GDSC Logo"
-                    fill
-                    className="object-contain"
-                    unoptimized
-                  />
+
                 </div>
 
 
                 <div className="flex flex-col">
-                  <span className="text-foreground text-2xl font-serif italic tracking-tight leading-none group-hover:text-[#4285F4] transition-colors">GDG NITH</span>
-                  <span className="text-[8px] text-muted-foreground uppercase tracking-[0.4em] font-bold">NIT Hamirpur</span>
+                  <ApplicationInfo />
                 </div>
               </Link>
 

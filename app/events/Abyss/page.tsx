@@ -428,6 +428,15 @@ export default function AbyssEventPage() {
         .mode-toggle {
             display: none !important;
         }
+        #social-links a{
+          color: #f6f6f6 !important;
+        }
+        
+        #gdg-logo{
+          background-color: transparent  !important;
+          border-color: transparent !important;
+          color: #f6f6f6 !important;
+        }
       `}} />
 
 

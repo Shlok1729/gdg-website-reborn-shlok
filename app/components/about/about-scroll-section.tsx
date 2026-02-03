@@ -88,10 +88,10 @@ export function AboutScrollSection() {
         <div className="text-center px-6">
           <p className="text-lg md:text-xl text-muted-foreground mb-2 tracking-widest uppercase">Welcome to</p>
           <h1 className="text-6xl md:text-8xl lg:text-9xl font-black uppercase text-foreground">
-            GDG NITH
+            NITH-CHAPTER
           </h1>
           <p className="mt-4 text-xl md:text-2xl text-muted-foreground max-w-2xl mx-auto">
-            Google Developer Groups - National Institute of Technology, Hamirpur
+            Google Developer Groups - LUDHIANA
           </p>
           <div className="mt-4 flex justify-center gap-2">
             <span className="w-3 h-3 rounded-full bg-[#4285F4]" />

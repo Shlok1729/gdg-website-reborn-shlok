@@ -14,6 +14,7 @@ import { cn } from "../../lib/utils";
 import { IconBrandInstagram, IconBrandTwitter, IconBrandFacebook, IconBrandMedium, IconBrandGithub, IconBrandYoutube } from "@tabler/icons-react";
 import { Button } from "../ui/button";
 import { ThemeSwitcher } from "../common/theme-switcher";
+import { ApplicationInfo } from "../logo";
 
 const socialLinks = [
   {
@@ -94,7 +95,7 @@ export const Navbar = () => {
               className="object-contain" // Keep aspect ratio
             />
           </div>
-          <div className={cn(
+          <div id="gdg-logo" className={cn(
             "border bg-card/50 backdrop-blur-md rounded-full px-4 py-1.5 transition-colors",
             scrolled && "bg-transparent border-transparent" // Hide capsule style when navbar itself is a capsule? Optional. Leaving as is for now feels safer.
           )}>
@@ -108,6 +109,7 @@ export const Navbar = () => {
         <motion.div
           animate={{ opacity: 1, scale: 1 }}
           className="hidden md:flex absolute left-1/2 -translate-x-1/2 pointer-events-auto gap-4"
+          id="social-links"
         >
           {socialLinks.map((link) => (
             <a href={link.to} key={link.name} className="text-foreground hover:text-primary transition-colors">
@@ -197,7 +199,7 @@ export const Navbar = () => {
                       <Link
                         href={link.to}
                         onClick={() => setIsOpen(false)}
-                        className="text-4xl md:text-6xl font-bold text-foreground hover:text-(--hover-color) transition-colors duration-300 block w-max"
+                        className="text-4xl md:text-6xl font-bold text-muted-foreground hover:text-(--hover-color) transition-colors duration-300 block w-max"
                         style={{ "--hover-color": hoverColor } as React.CSSProperties}
                       >
                         {link.text}
@@ -216,10 +218,11 @@ export const Navbar = () => {
                   transition={{ delay: 0.4 }}
                   className="mb-12"
                 >
-                  <h2 className="text-3xl md:text-5xl font-black text-white mb-6 tracking-tighter uppercase leading-tight">
-                    We Are <br /> <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-red-400 to-yellow-400">GDG-NITH</span>
-                  </h2>
-                  <p className="text-neutral-400 text-sm md:text-base max-w-md ml-auto leading-relaxed">
+                  <div className="flex flex-col items-end text-3xl md:text-5xl text-right  text-foreground/75 mb-6 tracking-tighter uppercase leading-tight">
+                    We Are <br />
+                    <ApplicationInfo className="text-foreground ml-auto mt-2" />
+                  </div>
+                  <p className="text-muted-foreground text-sm md:text-base max-w-md ml-auto leading-relaxed">
                     We think slightly out of the box, we believe that a club's resources must not only be channeled into conducting events but also to propagate learning and teaching, symbiotically.
                   </p>
                 </motion.div>
@@ -230,12 +233,9 @@ export const Navbar = () => {
                   transition={{ delay: 0.5 }}
                   className="flex gap-4"
                 >
-                  {/* Social Icons Placeholder */}
-                  <SocialLink href="#" icon={<IconBrandInstagram className="w-6 h-6" />} />
-                  <SocialLink href="#" icon={<IconBrandTwitter className="w-6 h-6" />} />
-                  <SocialLink href="#" icon={<IconBrandGithub className="w-6 h-6" />} />
-                  <SocialLink href="#" icon={<IconBrandYoutube className="w-6 h-6" />} />
-                  <SocialLink href="#" icon={<IconBrandMedium className="w-6 h-6" />} />
+                  {socialLinks.map((link) => (
+                    <SocialLink href={link.to} icon={<link.icon className="w-6 h-6" />} key={link.name} />
+                  ))}
                 </motion.div>
 
               </div>
@@ -251,7 +251,7 @@ const SocialLink = ({ href, icon }: { href: string; icon: React.ReactNode }) => 
   return (
     <a
       href={href}
-      className="size-10 rounded-full shadow bg-card border border-foreground flex items-center justify-center text-foreground hover:text-primary hover:border-primary transition-all"
+      className="size-10 rounded-full shadow bg-card border border-border flex items-center justify-center text-foreground hover:text-primary transition-all"
     >
       {icon}
     </a>

@@ -57,7 +57,7 @@ function BaseHeroSection(props: BaseHeroSectionProps) {
         className={cn("w-full relative min-h-screen py-16 pt-24 bg-white dark:bg-[#0a0a0f] overflow-hidden")}
         style={props.style}
     >
-    
+
         {/* Background Decorative Circles */}
         <div className="absolute inset-0 pointer-events-none">
             {/* Floating Orbitals */}
@@ -67,7 +67,7 @@ function BaseHeroSection(props: BaseHeroSectionProps) {
             <BackgroundDecorativeCircles />
 
         </div>
-    
+
         <div className="w-full min-h-[80dvh] max-w-[1600px] mx-auto flex flex-col md:flex-row items-center justify-between px-6 lg:px-12 gap-12 relative z-10">
             {/* Left Section - Text Content */}
             <div className="flex flex-col items-start justify-center flex-1 text-left p-8 relative pt-10 h-full">
@@ -75,7 +75,7 @@ function BaseHeroSection(props: BaseHeroSectionProps) {
                     <AnimatedTitle />
                 </h1>
                 <p className={cn("text-xl md:text-2xl lg:text-4xl text-foreground max-w-2xl leading-[1.8]", props.descriptionClassName)}>
-                {props.description}    
+                    {props.description}
                 </p>
                 {/* <p className={cn("text-xl md:text-2xl lg:text-4xl text-foreground max-w-2xl leading-relaxed", props.descriptionClassName)}>
                     <Cover>
@@ -87,10 +87,10 @@ function BaseHeroSection(props: BaseHeroSectionProps) {
                     data-aos="fade-up"
                     data-aos-anchor-placement="center-bottom"
                 >
-                    <button className="relative px-8 py-4 text-base font-semibold rounded-full bg-[#4285F4] dark:bg-white text-white dark:text-black hover:bg-[#3367D6] dark:hover:bg-gray-200 transition-all duration-300 shadow-lg hover:shadow-xl flex items-center gap-3 group overflow-hidden" onClick ={()=> window.location.href = "#events"}>
+                    <button className="relative px-8 py-4 text-base font-semibold rounded-full bg-[#4285F4] dark:bg-white text-white dark:text-black hover:bg-[#3367D6] dark:hover:bg-gray-200 transition-all duration-300 shadow-lg hover:shadow-xl flex items-center gap-3 group overflow-hidden" onClick={() => window.location.href = "#events"}>
                         Our Events
                         <ArrowRight className="w-6 h-6 group-hover:translate-x-1 transition-transform duration-300" />
-                        <BorderBeam 
+                        <BorderBeam
                             size={100}
                             duration={8}
                             borderWidth={2}
@@ -104,7 +104,7 @@ function BaseHeroSection(props: BaseHeroSectionProps) {
             </div>
 
             {/* Right Section - SVG */}
-            <div            
+            <div
                 className="flex-shrink-0 flex items-center justify-center w-full max-w-sm md:max-w-xl lg:max-w-lg relative z-10"
                 data-aos="fade-left"
                 data-aos-duration="1000"
