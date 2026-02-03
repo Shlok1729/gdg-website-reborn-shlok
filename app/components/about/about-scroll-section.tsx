@@ -22,7 +22,7 @@ export function AboutScrollSection() {
 
     // --- THE CURVE ("Snake") ANIMATION ---
     const pathLength = path.getTotalLength();
-    
+
     gsap.set(path, {
       strokeDasharray: pathLength,
       strokeDashoffset: pathLength,
@@ -42,17 +42,17 @@ export function AboutScrollSection() {
   }, { scope: containerRef });
 
   return (
-    <div 
-      ref={containerRef} 
+    <div
+      ref={containerRef}
       className="relative w-full bg-background overflow-hidden"
-      style={{ height: "200vh" }} 
+      style={{ height: "200vh" }}
     >
       {/* BACKGROUND LAYER: The SVG Curve */}
       <div className="absolute inset-0 z-0 w-full h-full pointer-events-none opacity-30">
         <svg
           className="w-full h-full"
-          viewBox="0 0 1000 3000" 
-          preserveAspectRatio="xMidYMin slice" 
+          viewBox="0 0 1000 3000"
+          preserveAspectRatio="xMidYMin slice"
           fill="none"
           xmlns="http://www.w3.org/2000/svg"
         >
@@ -67,8 +67,8 @@ export function AboutScrollSection() {
                C 300 2000, 700 1900, 500 2100
                C 300 2300, 250 2450, 600 2600
                C 950 2750, 1300 2800, 1500 2700"
-            stroke="#4285F4" 
-            strokeWidth="16"     
+            stroke="#4285F4"
+            strokeWidth="16"
             strokeLinecap="round"
           />
         </svg>
@@ -119,23 +119,11 @@ export function AboutScrollSection() {
                 By joining GDG NITH, you become part of a global community of developers passionate about technology, innovation, and making a difference through code.
               </p>
             </div>
-            
+
             {/* Video Placeholder */}
             <div className="relative aspect-video w-full rounded-2xl overflow-hidden bg-card border border-border group cursor-pointer">
-              <div className="absolute inset-0 bg-gradient-to-br from-[#4285F4]/10 via-[#EA4335]/10 to-[#34A853]/10" />
-              <div className="absolute inset-0 flex flex-col items-center justify-center gap-4">
-                {/* Play Button */}
-                <div className="w-20 h-20 rounded-full bg-[#4285F4] flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform duration-300">
-                  <svg 
-                    className="w-8 h-8 text-white ml-1" 
-                    fill="currentColor" 
-                    viewBox="0 0 24 24"
-                  >
-                    <path d="M8 5v14l11-7z" />
-                  </svg>
-                </div>
-                <p className="text-muted-foreground text-sm">Watch our story</p>
-              </div>
+              <iframe src="https://www.youtube.com/embed/o8NiE3XMPrM?autoplay=1&controls=0&loop=1&t=255" allow="autoplay" allowFullScreen loading="lazy" className="w-full h-full" />
+
               {/* Decorative corners */}
               <div className="absolute top-4 left-4 w-8 h-8 border-l-2 border-t-2 border-[#4285F4]/50" />
               <div className="absolute top-4 right-4 w-8 h-8 border-r-2 border-t-2 border-[#EA4335]/50" />
