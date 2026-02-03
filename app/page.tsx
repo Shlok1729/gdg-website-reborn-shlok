@@ -26,7 +26,6 @@ export default function Home() {
         <AboutScrollSection />
         <EventsSection />
         <TeamsSection />
-        <div className="h-[100vh]" />
         <Footer />
         
       </main>
