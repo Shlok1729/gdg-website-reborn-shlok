@@ -1,7 +1,8 @@
 "use client";
 import React from "react";
 import { motion } from "framer-motion";
-import { Link } from "lucide-react";
+import Link from "next/link";
+
 
 export default function BrandingTape() {
   return (
@@ -19,7 +20,7 @@ export default function BrandingTape() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8 }}
-          className="text-[15vw] md:text-[12vw] font-black text-black uppercase leading-none tracking-tighter select-none transform scale-x-110 md:scale-x-125"
+          className="text-[15vw] md:text-[12vw] font-black uppercase leading-none tracking-tighter select-none transform scale-x-110 md:scale-x-125"
         >
           GDG NITH
         </motion.h1>
