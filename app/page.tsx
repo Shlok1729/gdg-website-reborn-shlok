@@ -10,17 +10,14 @@ import EventsSection from "./components/home/sections/EventsSection";
 export default function Home() {
 
   return (
-    <div className="relative">
+    <div className="flex flex-col min-h-screen overflow-x-hidden relative">
+      <BaseHeroSection description="Empowering Developers, Elevating Innovation at GDG NITH Chapter." />
+      <PromoBanner />
+      <AboutScrollSection />
+      <EventsSection />
+      <TeamsSection />
+      <Footer />
 
-      <main className="flex flex-col min-h-screen">
-        <BaseHeroSection description="Empowering Developers, Elevating Innovation at GDG NITH Chapter." />
-        <PromoBanner />
-        <AboutScrollSection />
-        <EventsSection />
-        <TeamsSection />
-        <Footer />
-
-      </main>
 
     </div>
   );
