@@ -52,27 +52,34 @@ const PromoBanner = () => {
     return (
         <section className="relative w-full overflow-hidden bg-background py-0">
             {/* Increased height to ensure text visibility and prevent cropping */}
-            <div className="relative w-full min-h-dvh flex items-center justify-center  mx-auto rounded-lg overflow-hidden">
+            <div className="relative w-full min-h-dvh flex items-center justify-center mx-auto overflow-hidden">
                 {/* Background Image */}
                 <Image
                     src="/assets/abyssBg.png"
                     alt="Promo Banner Background"
                     fill
-                    className="object-contain w-full z-1 aspect-video rounded-lg overflow-hidden"
+                    className="object-cover w-full z-1" // Changed to object-cover for better mobile fill
                     priority
                 />
 
-                <div className="relative z-20 container mx-auto px-4 flex flex-col items-end md:flex-row md:justify-end gap-8 h-full">
-                    <div className="flex flex-col items-center md:items-start">
-                        <Image src="/assets/abyssLogo.png" alt="ABYSS" width={200} height={200} className="lg:h-16 h-10 w-auto" />
-                        <Image src="/assets/abyssHead.png" alt="ABYSS" width={200} height={200} className="lg:h-60 h-40 w-auto" />
-                        <Image src="/assets/abyssDate.png" alt="ABYSS" width={200} height={200} className="lg:h-40 h-20 w-auto" />
+                <div className="relative z-20 container mx-auto px-4 py-12 md:py-0 flex flex-col md:flex-row items-center md:items-end justify-center md:justify-end gap-8 h-full min-h-dvh md:min-h-0">
+                    <div className="flex flex-col items-center md:items-start w-full md:w-auto mt-20 md:mt-0">
+                        <Image src="/assets/abyssLogo.png" alt="ABYSS" width={200} height={200} className="lg:h-16 h-12 w-auto mb-4 md:mb-0" />
+                        <Image src="/assets/abyssHead.png" alt="ABYSS" width={200} height={200} className="lg:h-60 h-32 md:h-40 w-auto" />
+
+                        <Image
+                            src="/assets/abyssDate.png"
+                            alt="ABYSS Date"
+                            width={200}
+                            height={200}
+                            className="lg:h-24 h-10 md:h-14 w-auto"
+                        />
+
 
                         <Button
                             size="lg"
                             variant="outline"
-                            className={cn(
-                            )}
+                            className={cn("hidden md:inline-flex")}
                             asChild>
                             <Link href="/events/abyss">
                                 LEARN MORE
@@ -81,23 +88,23 @@ const PromoBanner = () => {
                         </Button>
                     </div>
                     {/* Main Content Area - Shifted to the right to avoid covering the ABYSS logo on the left */}
-                    <div className="flex flex-col md:flex-row items-center md:justify-end gap-8 w-full md:w-auto md:ml-auto">
+                    <div className="flex flex-col items-center md:items-end gap-8 w-full md:w-auto md:ml-auto mb-10 md:mb-0 text-center md:text-right">
 
                         {/* Countdown & Text */}
                         <motion.div
                             initial={{ opacity: 0, x: 50 }}
                             whileInView={{ opacity: 1, x: 0 }}
                             transition={{ duration: 0.8 }}
-                            className="ml-auto my-auto flex flex-col items-end text-center text-white"
+                            className="flex flex-col items-center md:items-end text-center md:text-right text-white"
                         >
-                            <div className="flex items-center gap-2 mb-2">
+                            <div className="flex items-center justify-center md:justify-end gap-2 mb-4 md:mb-2">
                                 <Image src="/assets/gemini-color.png" width={20} height={20} alt="Gemini" className="animate-pulse" />
                                 <h2 className="text-xl md:text-2xl font-bold uppercase tracking-widest text-white drop-shadow-lg">
                                     Registration Closing Soon
                                 </h2>
                             </div>
 
-                            <div className="flex gap-3 md:gap-4 text-center">
+                            <div className="flex gap-2 md:gap-4 text-center justify-center md:justify-end">
                                 <CountdownUnit value={timeLeft.days} label="Days" color="border-blue-500 text-blue-400" />
                                 <CountdownUnit value={timeLeft.hours} label="Hours" color="border-red-500 text-red-400" />
                                 <CountdownUnit value={timeLeft.minutes} label="Mins" color="border-yellow-500 text-yellow-400" />
@@ -107,18 +114,28 @@ const PromoBanner = () => {
                                 initial={{ opacity: 0, scale: 0.8 }}
                                 whileInView={{ opacity: 1, scale: 1 }}
                                 transition={{ duration: 0.8, delay: 0.2 }}
-                                className="flex flex-col items-center gap-3 justify-end flex-wrap mt-10"
+                                className="flex flex-col items-center md:items-end gap-3 justify-end flex-wrap mt-8 md:mt-10"
                             >
                                 <Button
                                     size="lg"
                                     className={cn(
-                                        "relative group overflow-hidden text-lg font-bold px-8 py-6 rounded-full mt-4 transition-all",
+                                        "relative group overflow-hidden text-base md:text-lg font-bold px-6 py-4 md:px-8 md:py-6 rounded-full mt-4 transition-all",
                                         "bg-white text-neutral-900 hover:scale-105 border-2 border-white hover:bg-white/10 backdrop-blur-lg hover:text-white shadow-xl hover:shadow-2xl"
                                     )}
                                     asChild>
                                     <Link href="/events/abyss">
                                         <Sparkles size={20} className="animate-pulse size-4" />
                                         REGISTER NOW
+                                    </Link>
+                                </Button>
+
+                                <Button
+                                    size="sm"
+                                    variant="ghost"
+                                    className="md:hidden text-white/50 hover:text-white mt-2"
+                                    asChild>
+                                    <Link href="/events/abyss">
+                                        LEARN MORE <ArrowUpRight size={16} />
                                     </Link>
                                 </Button>
 
@@ -136,9 +153,9 @@ const PromoBanner = () => {
 };
 
 const CountdownUnit = ({ value, label, color }: { value: number; label: string, color: string }) => (
-    <div className={`flex flex-col items-center p-2 md:p-3 bg-black/40 backdrop-blur-xl rounded-xl border ${color} min-w-[60px] md:min-w-[70px] shadow-lg`}>
-        <span className={`text-xl md:text-2xl font-bold font-mono ${color.split(' ')[1]}`}>{String(value).padStart(2, '0')}</span>
-        <span className="text-[9px] md:text-[10px] uppercase tracking-wider text-white/50 font-medium">{label}</span>
+    <div className={`flex flex-col items-center p-2 rounded-xl border ${color} min-w-[50px] md:min-w-[70px] shadow-lg bg-black/40 backdrop-blur-xl`}>
+        <span className={`text-lg md:text-2xl font-bold font-mono ${color.split(' ')[1]}`}>{String(value).padStart(2, '0')}</span>
+        <span className="text-[8px] md:text-[10px] uppercase tracking-wider text-white/50 font-medium">{label}</span>
     </div>
 );
 

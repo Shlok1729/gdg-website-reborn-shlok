@@ -65,6 +65,16 @@ export const Navbar = () => {
     }
   }, [isOpen]);
 
+  const [isMobile, setIsMobile] = useState(false);
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+    checkMobile();
+    window.addEventListener("resize", checkMobile);
+    return () => window.removeEventListener("resize", checkMobile);
+  }, []);
+
   return (
     <>
       {/* Top Navbar Strip */}
@@ -72,7 +82,7 @@ export const Navbar = () => {
         initial={{ y: -100 }}
         animate={{
           y: scrolled ? 20 : 0,
-          width: scrolled ? "60%" : "100%",
+          width: scrolled ? (isMobile ? "95%" : "60%") : "100%",
           borderRadius: scrolled ? "50px" : "0px",
           backdropFilter: scrolled ? "blur(10px)" : "none",
           border: scrolled ? "1px solid rgba(255, 255, 255, 0.1)" : "1px solid transparent",
@@ -147,11 +157,7 @@ export const Navbar = () => {
                     className="object-contain"
                   />
                 </div>
-                <div className="border border-foreground rounded-full px-4 py-1.5">
-                  <span className="text-foreground font-medium text-sm tracking-wide">
-                    GDG-NITH
-                  </span>
-                </div>
+
               </div>
 
               <div className="flex items-center gap-4">

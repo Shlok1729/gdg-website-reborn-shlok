@@ -45,10 +45,10 @@ export function AboutScrollSection() {
     <div
       ref={containerRef}
       className="relative w-full bg-background overflow-hidden"
-      style={{ height: "200vh" }}
+      style={{ minHeight: "150vh" }} // Changed from fixed height to minHeight to allow content to push it if needed, or stick to vh
     >
-      {/* BACKGROUND LAYER: The SVG Curve */}
-      <div className="absolute inset-0 z-0 w-full h-full pointer-events-none opacity-30">
+      {/* BACKGROUND LAYER: The SVG Curve - Hidden on mobile or simplified */}
+      <div className="absolute inset-0 z-0 w-full h-full pointer-events-none opacity-30 hidden md:block">
         <svg
           className="w-full h-full"
           viewBox="0 0 1000 3000"
@@ -74,8 +74,8 @@ export function AboutScrollSection() {
         </svg>
       </div>
 
-      {/* Decorative dots */}
-      <div className="absolute inset-0 z-0 pointer-events-none">
+      {/* Decorative dots - Hidden on small mobile to reduce clutter */}
+      <div className="absolute inset-0 z-0 pointer-events-none hidden md:block">
         <div className="absolute top-[15%] left-[5%] w-4 h-4 rounded-full bg-[#4285F4] opacity-60 animate-pulse" />
         <div className="absolute top-[25%] right-[10%] w-6 h-6 rounded-full bg-[#EA4335] opacity-50 animate-pulse" style={{ animationDelay: '0.5s' }} />
         <div className="absolute top-[45%] left-[8%] w-5 h-5 rounded-full bg-[#FBBC05] opacity-60 animate-pulse" style={{ animationDelay: '1s' }} />
@@ -84,51 +84,51 @@ export function AboutScrollSection() {
       </div>
 
       {/* SECTION 1: Hero Title */}
-      <div className="sticky top-0 h-[70vh] flex items-center justify-center">
-        <div className="text-center px-6">
-          <p className="text-lg md:text-xl text-muted-foreground mb-2 tracking-widest uppercase">Welcome to</p>
-          <h1 className="text-6xl md:text-8xl lg:text-9xl font-black uppercase text-foreground">
+      <div className="sticky top-0 h-[50vh] md:h-[70vh] flex items-center justify-center pt-20 md:pt-0">
+        <div className="text-center px-4 md:px-6">
+          <p className="text-sm md:text-xl text-muted-foreground mb-2 tracking-widest uppercase">Welcome to</p>
+          <h1 className="text-4xl md:text-8xl lg:text-9xl font-black uppercase text-foreground">
             NITH-CHAPTER
           </h1>
-          <p className="mt-4 text-xl md:text-2xl text-muted-foreground max-w-2xl mx-auto">
+          <p className="mt-4 text-base md:text-2xl text-muted-foreground max-w-2xl mx-auto">
             Google Developer Groups - LUDHIANA
           </p>
           <div className="mt-4 flex justify-center gap-2">
-            <span className="w-3 h-3 rounded-full bg-[#4285F4]" />
-            <span className="w-3 h-3 rounded-full bg-[#EA4335]" />
-            <span className="w-3 h-3 rounded-full bg-[#FBBC05]" />
-            <span className="w-3 h-3 rounded-full bg-[#34A853]" />
+            <span className="w-2 h-2 md:w-3 md:h-3 rounded-full bg-[#4285F4]" />
+            <span className="w-2 h-2 md:w-3 md:h-3 rounded-full bg-[#EA4335]" />
+            <span className="w-2 h-2 md:w-3 md:h-3 rounded-full bg-[#FBBC05]" />
+            <span className="w-2 h-2 md:w-3 md:h-3 rounded-full bg-[#34A853]" />
           </div>
         </div>
       </div>
 
       {/* SECTION 2: About Description */}
-      <div className="relative z-10 min-h-[60vh] flex items-center py-12">
+      <div className="relative z-10 min-h-[50vh] md:min-h-[60vh] flex items-center py-12 md:py-12 bg-background/80 backdrop-blur-sm md:bg-transparent">
         <div className="container mx-auto px-6 lg:px-12">
           <div className="grid lg:grid-cols-2 gap-8 items-center">
-            <div>
-              <h2 className="text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-bold mb-4">
+            <div className="order-2 lg:order-1">
+              <h2 className="text-3xl md:text-6xl lg:text-7xl xl:text-8xl font-bold mb-4">
                 <span className="text-[#4285F4]">Learn.</span>{" "}
                 <span className="text-[#EA4335]">Build.</span>{" "}
                 <span className="text-[#34A853]">Connect.</span>
               </h2>
-              <p className="text-lg md:text-xl text-muted-foreground mb-4 leading-relaxed">
+              <p className="text-base md:text-xl text-muted-foreground mb-4 leading-relaxed">
                 Google Developer Groups (GDG) on campus are university-based community groups for students interested in Google developer technologies. Students from all undergraduate or graduate programs with an interest in growing as a developer are welcome.
               </p>
-              <p className="text-lg md:text-xl text-muted-foreground leading-relaxed">
+              <p className="text-base md:text-xl text-muted-foreground leading-relaxed">
                 By joining GDG NITH, you become part of a global community of developers passionate about technology, innovation, and making a difference through code.
               </p>
             </div>
 
             {/* Video Placeholder */}
-            <div className="relative aspect-video w-full rounded-2xl overflow-hidden bg-card border border-border group cursor-pointer">
-              <iframe src="https://www.youtube.com/embed/o8NiE3XMPrM?autoplay=1&controls=0&loop=1&t=55" allow="autoplay" allowFullScreen loading="lazy" className="w-full h-full" />
+            <div className="order-1 lg:order-2 relative aspect-video w-full rounded-2xl overflow-hidden bg-card border border-border group cursor-pointer">
+              <iframe src="https://www.youtube.com/embed/o8NiE3XMPrM?start=0&amp;end=61" allow="autoplay" allowFullScreen loading="lazy" className="w-full h-full" />
 
               {/* Decorative corners */}
-              <div className="absolute top-4 left-4 w-8 h-8 border-l-2 border-t-2 border-[#4285F4]/50" />
-              <div className="absolute top-4 right-4 w-8 h-8 border-r-2 border-t-2 border-[#EA4335]/50" />
-              <div className="absolute bottom-4 left-4 w-8 h-8 border-l-2 border-b-2 border-[#FBBC05]/50" />
-              <div className="absolute bottom-4 right-4 w-8 h-8 border-r-2 border-b-2 border-[#34A853]/50" />
+              <div className="absolute top-4 left-4 w-4 md:w-8 h-4 md:h-8 border-l-2 border-t-2 border-[#4285F4]/50" />
+              <div className="absolute top-4 right-4 w-4 md:w-8 h-4 md:h-8 border-r-2 border-t-2 border-[#EA4335]/50" />
+              <div className="absolute bottom-4 left-4 w-4 md:w-8 h-4 md:h-8 border-l-2 border-b-2 border-[#FBBC05]/50" />
+              <div className="absolute bottom-4 right-4 w-4 md:w-8 h-4 md:h-8 border-r-2 border-b-2 border-[#34A853]/50" />
             </div>
           </div>
         </div>

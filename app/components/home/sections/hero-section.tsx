@@ -68,13 +68,13 @@ function BaseHeroSection(props: BaseHeroSectionProps) {
 
         </div>
 
-        <div className="w-full min-h-[80dvh] max-w-[1600px] mx-auto flex flex-col md:flex-row items-center justify-between px-6 lg:px-12 gap-12 relative z-10">
+        <div className="w-full min-h-[80dvh] max-w-[1600px] mx-auto flex flex-col lg:flex-row items-center justify-between px-6 lg:px-12 gap-12 relative z-10 pt-20 md:pt-0">
             {/* Left Section - Text Content */}
-            <div className="flex flex-col items-start justify-center flex-1 text-left p-8 relative pt-10 h-full">
-                <h1 className={cn("mb-8 text-4xl md:text-6xl lg:text-7xl xl:text-7xl font-bold leading-none", props.titleClassName)}>
+            <div className="flex flex-col items-center lg:items-start justify-center flex-1 text-center lg:text-left p-4 md:p-8 relative pt-10 h-full order-2 lg:order-1">
+                <h1 className={cn("mb-6 md:mb-8 text-4xl md:text-6xl lg:text-7xl xl:text-7xl font-bold leading-tight md:leading-none", props.titleClassName)}>
                     <AnimatedTitle />
                 </h1>
-                <p className={cn("text-xl md:text-2xl lg:text-4xl text-foreground max-w-2xl leading-[1.8]", props.descriptionClassName)}>
+                <p className={cn("text-lg md:text-2xl lg:text-4xl text-foreground max-w-2xl leading-relaxed md:leading-[1.8]", props.descriptionClassName)}>
                     {props.description}
                 </p>
                 {/* <p className={cn("text-xl md:text-2xl lg:text-4xl text-foreground max-w-2xl leading-relaxed", props.descriptionClassName)}>
@@ -83,7 +83,7 @@ function BaseHeroSection(props: BaseHeroSectionProps) {
                     </Cover>
                 </p> */}
                 <div
-                    className="mt-12 flex flex-wrap gap-y-6 gap-x-8"
+                    className="mt-8 md:mt-12 flex flex-col md:flex-row flex-wrap gap-y-6 gap-x-8 items-center justify-center lg:justify-start"
                     data-aos="fade-up"
                     data-aos-anchor-placement="center-bottom"
                 >
@@ -105,7 +105,7 @@ function BaseHeroSection(props: BaseHeroSectionProps) {
 
             {/* Right Section - SVG */}
             <div
-                className="flex-shrink-0 flex items-center justify-center w-full max-w-sm md:max-w-xl lg:max-w-lg relative z-10"
+                className="flex-shrink-0 flex items-center justify-center w-full max-w-xs md:max-w-xl lg:max-w-lg relative z-10 order-1 lg:order-2 mb-8 lg:mb-0"
                 data-aos="fade-left"
                 data-aos-duration="1000"
             >

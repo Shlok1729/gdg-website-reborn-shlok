@@ -22,7 +22,7 @@ const teamMembers = [...baseTeamMembers, ...baseTeamMembers, ...baseTeamMembers,
 
 export const TeamsSection = () => {
   return (
-    <section className="py-24 bg-white dark:bg-zinc-900 overflow-hidden relative transition-colors duration-300">
+    <section className="py-12 md:py-24 bg-white dark:bg-zinc-900 overflow-hidden relative transition-colors duration-300">
       <div className="container mx-auto px-6 mb-12 flex flex-col items-center text-center gap-6">
         <Link
           href="/team"

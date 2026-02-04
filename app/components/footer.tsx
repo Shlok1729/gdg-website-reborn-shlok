@@ -31,14 +31,14 @@ export default function Footer() {
 
   return (
     <>
-      <div className="h-screen -z-1" />
+      <div className="h-px md:h-screen -z-1" /> {/* Reduced spacer on mobile since footer is static */}
 
       <footer
-        className="fixed z-0 bottom-0 left-0 w-full h-[550px] md:h-[400px] text-foreground flex flex-col justify-end"
+        className="relative md:fixed z-0 bottom-0 left-0 w-full h-auto md:h-[400px] text-foreground flex flex-col justify-end"
       >
         <motion.div
           style={{ scale: footerScale, opacity: footerOpacity }}
-          className="bg-neutral-50/50 dark:bg-black/40 border-t border-neutral-200 dark:border-white/5 pt-16 pb-8 px-8"
+          className="bg-neutral-50/50 dark:bg-black/40 border-t border-neutral-200 dark:border-white/5 pt-10 pb-8 px-6 md:pt-16 md:px-8"
         >
           <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-12 gap-10">
 
