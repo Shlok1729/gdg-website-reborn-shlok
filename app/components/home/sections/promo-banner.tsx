@@ -123,7 +123,7 @@ const PromoBanner = () => {
                                         "bg-white text-neutral-900 hover:scale-105 border-2 border-white hover:bg-white/10 backdrop-blur-lg hover:text-white shadow-xl hover:shadow-2xl"
                                     )}
                                     asChild>
-                                    <Link href="/events/abyss">
+                                    <Link href="/events/Abyss">
                                         <Sparkles size={20} className="animate-pulse size-4" />
                                         REGISTER NOW
                                     </Link>

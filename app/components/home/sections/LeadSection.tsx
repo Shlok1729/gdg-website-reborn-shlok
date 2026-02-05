@@ -28,7 +28,7 @@ export function SocietyLeadSection() {
                 <div className="relative w-52 h-64 rounded-2xl overflow-hidden border border-border shadow-lg shadow-black/40">
 
                   <Image
-                    src="/assets/Soham.jpg"
+                    src="/assets/soham.jpg"
                     alt="Society Lead"
                     fill
                     className="object-cover"
