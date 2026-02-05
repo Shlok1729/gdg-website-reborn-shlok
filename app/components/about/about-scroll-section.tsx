@@ -103,7 +103,7 @@ export function AboutScrollSection() {
       </div>
 
       {/* SECTION 2: About Description */}
-      <div className="relative z-10 min-h-[50vh] md:min-h-[60vh] flex items-center py-12 md:py-25 bg-background/80 backdrop-blur-sm md:bg-transparent">
+      <div className="relative z-10 min-h-[50vh] md:min-h-[60vh] flex items-center py-12 md:py-32 bg-background/80 backdrop-blur-sm md:bg-transparent">
         <div className="container mx-auto px-6 lg:px-12">
           <div className="grid lg:grid-cols-2 gap-8 items-center">
             <div className="order-2 lg:order-1">
