@@ -1,7 +1,7 @@
 "use client";
 
 import type React from "react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { useGlitch } from "react-powerglitch";
 import localFont from "next/font/local";
@@ -22,191 +22,6 @@ interface TeamMember {
   linkedin?: string;
 }
 
-const teamMembers: TeamMember[] = [
-  {
-    image: "https://via.placeholder.com/150",
-    name: "Alice Johnson",
-    position: "Web Team Lead",
-    category: "Web Team",
-    year: "Year 3",
-  },
-  {
-    image: "https://via.placeholder.com/150",
-    name: "Bob Smith",
-    position: "AI/ML Team Lead",
-    category: "AI/ML Team",
-    year: "Year 4",
-  },
-  {
-    image: "https://via.placeholder.com/150",
-    name: "Charlie Brown",
-    position: "UI/UX Team Lead",
-    category: "UI/UX Team",
-    year: "Year 2",
-  },
-  {
-    image: "https://via.placeholder.com/150",
-    name: "Daisy Lee",
-    position: "Android Team Lead",
-    category: "Android Team",
-    year: "Year 3",
-  },
-  {
-    image: "https://via.placeholder.com/150",
-    name: "Evan Wright",
-    position: "Web Developer",
-    category: "Web Team",
-    year: "Year 2",
-  },
-  {
-    image: "https://via.placeholder.com/150",
-    name: "Fayla Grey",
-    position: "AI/ML Mentor",
-    category: "AI/ML Team",
-    year: "Year 4",
-  },
-  {
-    image: "https://via.placeholder.com/150",
-    name: "George Miller",
-    position: "UI/UX Designer",
-    category: "UI/UX Team",
-    year: "Year 3",
-  },
-  {
-    image: "https://via.placeholder.com/150",
-    name: "Henry Lang",
-    position: "Android Developer",
-    category: "Android Team",
-    year: "Year 3",
-  },
-  {
-    image: "https://via.placeholder.com/150",
-    name: "Ivy White",
-    position: "Web Developer",
-    category: "Web Team",
-    year: "Year 2",
-  },
-  {
-    image: "https://via.placeholder.com/150",
-    name: "Jack Black",
-    position: "AI/ML Researcher",
-    category: "AI/ML Team",
-    year: "Year 4",
-  },
-  {
-    image: "https://via.placeholder.com/150",
-    name: "Kimberly Brown",
-    position: "UI/UX Researcher",
-    category: "UI/UX Team",
-    year: "Year 3",
-  },
-  {
-    image: "https://via.placeholder.com/150",
-    name: "Liam Green",
-    position: "Android Researcher",
-    category: "Android Team",
-    year: "Year 2",
-  },
-  {
-    image: "https://via.placeholder.com/150",
-    name: "Mona Blue",
-    position: "Web Developer",
-    category: "Web Team",
-    year: "Year 3",
-  },
-  {
-    image: "https://via.placeholder.com/150",
-    name: "Nina Grey",
-    position: "AI/ML Specialist",
-    category: "AI/ML Team",
-    year: "Year 2",
-  },
-  {
-    image: "https://via.placeholder.com/150",
-    name: "Oscar Green",
-    position: "UI/UX Designer",
-    category: "UI/UX Team",
-    year: "Year 4",
-  },
-  {
-    image: "https://via.placeholder.com/150",
-    name: "Paul White",
-    position: "Android Developer",
-    category: "Android Team",
-    year: "Year 4",
-  },
-  {
-    image: "https://via.placeholder.com/150",
-    name: "Quinn Yellow",
-    position: "Web Developer",
-    category: "Web Team",
-    year: "Year 2",
-  },
-  {
-    image: "https://via.placeholder.com/150",
-    name: "Rita Black",
-    position: "AI/ML Researcher",
-    category: "AI/ML Team",
-    year: "Year 4",
-  },
-  {
-    image: "https://via.placeholder.com/150",
-    name: "Sam Blue",
-    position: "UI/UX Designer",
-    category: "UI/UX Team",
-    year: "Year 2",
-  },
-  {
-    image: "https://via.placeholder.com/150",
-    name: "Tom Red",
-    position: "Android Team Lead",
-    category: "Android Team",
-    year: "Year 3",
-  },
-  {
-    image: "https://via.placeholder.com/150",
-    name: "Uma Green",
-    position: "Web Developer",
-    category: "Web Team",
-    year: "Year 4",
-  },
-  {
-    image: "https://via.placeholder.com/150",
-    name: "Vicky Blue",
-    position: "AI/ML Specialist",
-    category: "AI/ML Team",
-    year: "Year 3",
-  },
-  {
-    image: "https://via.placeholder.com/150",
-    name: "Will Brown",
-    position: "UI/UX Researcher",
-    category: "UI/UX Team",
-    year: "Year 2",
-  },
-  {
-    image: "https://via.placeholder.com/150",
-    name: "Xander Red",
-    position: "Android Developer",
-    category: "Android Team",
-    year: "Year 4",
-  },
-  {
-    image: "https://via.placeholder.com/150",
-    name: "Yara White",
-    position: "Web Team Lead",
-    category: "Web Team",
-    year: "Year 3",
-  },
-  {
-    image: "",
-    name: "Zane Black",
-    position: "AI/ML Team Lead",
-    category: "AI/ML Team",
-    year: "Year 1",
-  },
-];
-
 const categories = [
   "All",
   "Year 1",
@@ -223,6 +38,25 @@ const TeamSelector: React.FC = () => {
     shake: false,
   });
   const [selectedCategory, setSelectedCategory] = useState<string>("All");
+  const [teamMembers, setTeamMembers] = useState<TeamMember[]>([]);
+  const [isLoading, setIsLoading] = useState<boolean>(true);
+
+  // Fetch team data from JSON file
+  useEffect(() => {
+    const fetchTeamData = async () => {
+      try {
+        const response = await fetch('/assets/team-data.json');
+        const data = await response.json();
+        setTeamMembers(data.teamMembers);
+      } catch (error) {
+        console.error('Error fetching team data:', error);
+      } finally {
+        setIsLoading(false);
+      }
+    };
+
+    fetchTeamData();
+  }, []);
 
   // Year order for sorting
   const yearOrder = { "Year 4": 1, "Year 3": 2, "Year 2": 3, "Year 1": 4 };
@@ -265,23 +99,31 @@ const TeamSelector: React.FC = () => {
 
       {/* Team Members Display */}
       <div className="flex justify-center">
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8 max-w-full">
-          {filteredTeamMembers.map((member, index) => (
-            <div key={index} className="flex justify-center">
-              <ProfileCard
-                image={member.image}
-                name={member.name}
-                position={member.position}
-                category={member.category}
-                year={member.year}
-              />
-            </div>
-          ))}
-        </div>
+        {isLoading ? (
+          <p className="text-center text-neutral-500 dark:text-neutral-400 text-lg">
+            Loading team members...
+          </p>
+        ) : (
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8 max-w-full">
+            {filteredTeamMembers.map((member, index) => (
+              <div key={index} className="flex justify-center">
+                <ProfileCard
+                  image={member.image}
+                  name={member.name}
+                  position={member.position}
+                  category={member.category}
+                  year={member.year}
+                  github={member.github}
+                  linkedin={member.linkedin}
+                />
+              </div>
+            ))}
+          </div>
+        )}
       </div>
 
       {/* No Results Message */}
-      {filteredTeamMembers.length === 0 && (
+      {!isLoading && filteredTeamMembers.length === 0 && (
         <p className="text-center text-neutral-500 dark:text-neutral-400 text-lg mt-6">
           No team members found in this category.
         </p>

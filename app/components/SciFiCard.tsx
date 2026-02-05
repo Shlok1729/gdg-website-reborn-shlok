@@ -114,9 +114,9 @@ const SciFiCard: React.FC<SciFiCardProps> = ({
       </svg>
 
       {/* 3. CONTENT LAYER */}
-      <div className="absolute inset-0 z-30 flex flex-col items-center justify-center p-6 text-center">
+      <div className="absolute inset-0 z-30 flex flex-col items-center justify-center p-4 sm:p-6 text-center">
         <h2 className="
-          text-2xl font-bold uppercase tracking-widest text-white 
+          text-lg sm:text-xl md:text-2xl font-bold uppercase tracking-wider sm:tracking-widest text-white 
           transform -translate-y-8 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 
           transition-all duration-500 ease-out
           drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)]

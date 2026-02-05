@@ -1,5 +1,18 @@
+"use client";
+
+import { useState, useEffect } from "react";
 import { InfiniteSlider } from "../ui/infinite-slider";
 import Link from "next/link";
+
+interface TeamMember {
+  image: string;
+  name: string;
+  position: string;
+  category: string;
+  year: string;
+  github?: string;
+  linkedin?: string;
+}
 
 const TeamMemberCard = ({ imageUrl }: { imageUrl: string }) => (
   <div className="relative w-[3cm] h-[3cm] flex-shrink-0 overflow-hidden group">
@@ -11,16 +24,27 @@ const TeamMemberCard = ({ imageUrl }: { imageUrl: string }) => (
   </div>
 );
 
-const baseTeamMembers = [
-  { name: "Satya Nadella", role: "CEO", imageUrl: "/assets/images.jpeg" },
-  { name: "Elon Musk", role: "Tech King", imageUrl: "/assets/elon_musk_royal_society.jpg" },
-  { name: "Sundar Pichai", role: "CEO", imageUrl: "/assets/sundar.jpeg" },
-];
-
-// Duplicate the array significantly to ensure seamless looping on large screens
-const teamMembers = [...baseTeamMembers, ...baseTeamMembers, ...baseTeamMembers, ...baseTeamMembers, ...baseTeamMembers, ...baseTeamMembers];
-
 export const TeamsSection = () => {
+  const [thirdYearMembers, setThirdYearMembers] = useState<TeamMember[]>([]);
+  const [secondYearMembers, setSecondYearMembers] = useState<TeamMember[]>([]);
+
+  useEffect(() => {
+    const fetchTeamData = async () => {
+      try {
+        const response = await fetch('/assets/team-data.json');
+        const data = await response.json();
+        // Filter by year and duplicate for seamless looping
+        const year3 = data.teamMembers.filter((m: TeamMember) => m.year === "Year 3");
+        const year2 = data.teamMembers.filter((m: TeamMember) => m.year === "Year 2");
+        setThirdYearMembers([...year3, ...year3, ...year3]);
+        setSecondYearMembers([...year2, ...year2, ...year2]);
+      } catch (error) {
+        console.error('Error fetching team data:', error);
+      }
+    };
+
+    fetchTeamData();
+  }, []);
   return (
     <section className="py-12 md:py-24 bg-white dark:bg-zinc-900 overflow-hidden relative transition-colors duration-300">
       <div className="container mx-auto px-6 mb-12 flex flex-col items-center text-center gap-6">
@@ -50,17 +74,17 @@ export const TeamsSection = () => {
       </div>
 
       <div className="space-y-8">
-        {/* Row 1: Left Scroll */}
+        {/* Row 1: Left Scroll - 3rd Year */}
         <InfiniteSlider gap={24} speed={75} speedOnHover={50}>
-          {teamMembers.map((member, idx) => (
-            <TeamMemberCard key={idx} imageUrl={member.imageUrl} />
+          {thirdYearMembers.map((member, idx) => (
+            <TeamMemberCard key={idx} imageUrl={member.image} />
           ))}
         </InfiniteSlider>
 
-        {/* Row 2: Right Scroll (Reverse) */}
+        {/* Row 2: Right Scroll (Reverse) - 2nd Year */}
         <InfiniteSlider gap={24} speed={75} speedOnHover={50} reverse>
-          {teamMembers.map((member, idx) => (
-            <TeamMemberCard key={idx + 10} imageUrl={member.imageUrl} />
+          {secondYearMembers.map((member, idx) => (
+            <TeamMemberCard key={idx + 10} imageUrl={member.image} />
           ))}
         </InfiniteSlider>
       </div>

@@ -1,0 +1,445 @@
+{
+  "teamMembers": [
+    {
+      "image": "https://fyv51nxvng.ufs.sh/f/HcwcjQbuobkn23lzs64zSgmelTsUJd1pYO2k0qQyXABC6F3r",
+      "name": "Soham Juneja",
+      "position": "GDG Lead",
+      "category": "",
+      "year": "Year 3",
+      "github": "",
+      "linkedin": ""
+    },
+    {
+      "image": "/assets/sundar.jpeg",
+      "name": "Daisy Lee",
+      "position": "Android Team Lead",
+      "category": "",
+      "year": "Year 3",
+      "github": "",
+      "linkedin": ""
+    },
+    {
+      "image": "/assets/images.jpeg",
+      "name": "George Miller",
+      "position": "UI/UX Designer",
+      "category": "",
+      "year": "Year 3",
+      "github": "",
+      "linkedin": ""
+    },
+    {
+      "image": "/assets/sundar.jpeg",
+      "name": "Henry Lang",
+      "position": "Android Developer",
+      "category": "",
+      "year": "Year 3",
+      "github": "",
+      "linkedin": ""
+    },
+    {
+      "image": "/assets/elon_musk_royal_society.jpg",
+      "name": "Kimberly Brown",
+      "position": "UI/UX Researcher",
+      "category": "",
+      "year": "Year 3",
+      "github": "",
+      "linkedin": ""
+    },
+    {
+      "image": "/assets/images.jpeg",
+      "name": "Mona Blue",
+      "position": "Web Developer",
+      "category": "",
+      "year": "Year 3",
+      "github": "",
+      "linkedin": ""
+    },
+    {
+      "image": "/assets/sundar.jpeg",
+      "name": "Tom Red",
+      "position": "Android Team Lead",
+      "category": "",
+      "year": "Year 3",
+      "github": "",
+      "linkedin": ""
+    },
+    {
+      "image": "/assets/elon_musk_royal_society.jpg",
+      "name": "Vicky Blue",
+      "position": "AI/ML Specialist",
+      "category": "",
+      "year": "Year 3",
+      "github": "",
+      "linkedin": ""
+    },
+    {
+      "image": "/assets/images.jpeg",
+      "name": "Yara White",
+      "position": "Web Team Lead",
+      "category": "",
+      "year": "Year 3",
+      "github": "",
+      "linkedin": ""
+    },
+    {
+      "image": "/assets/sundar.jpeg",
+      "name": "Marcus Chen",
+      "position": "AI/ML Lead",
+      "category": "",
+      "year": "Year 3",
+      "github": "",
+      "linkedin": ""
+    },
+    {
+      "image": "/assets/elon_musk_royal_society.jpg",
+      "name": "Priya Sharma",
+      "position": "Web Developer",
+      "category": "",
+      "year": "Year 3",
+      "github": "",
+      "linkedin": ""
+    },
+    {
+      "image": "/assets/images.jpeg",
+      "name": "Derek Stone",
+      "position": "UI/UX Designer",
+      "category": "",
+      "year": "Year 3",
+      "github": "",
+      "linkedin": ""
+    },
+    {
+      "image": "/assets/sundar.jpeg",
+      "name": "Anika Patel",
+      "position": "Android Developer",
+      "category": "",
+      "year": "Year 3",
+      "github": "",
+      "linkedin": ""
+    },
+    {
+      "image": "/assets/elon_musk_royal_society.jpg",
+      "name": "Ryan Foster",
+      "position": "AI/ML Researcher",
+      "category": "",
+      "year": "Year 3",
+      "github": "",
+      "linkedin": ""
+    },
+    {
+      "image": "/assets/images.jpeg",
+      "name": "Sophia Adams",
+      "position": "Web Developer",
+      "category": "",
+      "year": "Year 3",
+      "github": "",
+      "linkedin": ""
+    },
+    {
+      "image": "/assets/sundar.jpeg",
+      "name": "Nathan Cruz",
+      "position": "UI/UX Designer",
+      "category": "",
+      "year": "Year 3",
+      "github": "",
+      "linkedin": ""
+    },
+    {
+      "image": "/assets/elon_musk_royal_society.jpg",
+      "name": "Mia Thompson",
+      "position": "Android Developer",
+      "category": "",
+      "year": "Year 3",
+      "github": "",
+      "linkedin": ""
+    },
+    {
+      "image": "/assets/images.jpeg",
+      "name": "Leo Martinez",
+      "position": "AI/ML Specialist",
+      "category": "",
+      "year": "Year 3",
+      "github": "",
+      "linkedin": ""
+    },
+    {
+      "image": "/assets/sundar.jpeg",
+      "name": "Emma Wilson",
+      "position": "Web Developer",
+      "category": "",
+      "year": "Year 3",
+      "github": "",
+      "linkedin": ""
+    },
+    {
+      "image": "/assets/elon_musk_royal_society.jpg",
+      "name": "Jake Robinson",
+      "position": "UI/UX Researcher",
+      "category": "",
+      "year": "Year 3",
+      "github": "",
+      "linkedin": ""
+    },
+    {
+      "image": "/assets/images.jpeg",
+      "name": "Olivia Turner",
+      "position": "Android Developer",
+      "category": "",
+      "year": "Year 3",
+      "github": "",
+      "linkedin": ""
+    },
+    {
+      "image": "https://fyv51nxvng.ufs.sh/f/HcwcjQbuobknXuJgYvoiRODFoY8zELUatCZXPB7wh1lpTygH",
+      "name": "Daksh",
+      "position": "EXECUTIVE MEMBER",
+      "category": "",
+      "year": "Year 2",
+      "github": "",
+      "linkedin": ""
+    },
+    {
+      "image": "https://fyv51nxvng.ufs.sh/f/HcwcjQbuobknmBOcwR2ohS4gx0sWtKF5ePjqv6cT7Ekw3VDQ",
+      "name": "Jatin Sharma",
+      "position": "Executive Member",
+      "category": "",
+      "year": "Year 2",
+      "github": "",
+      "linkedin": ""
+    },
+    {
+      "image": "https://fyv51nxvng.ufs.sh/f/HcwcjQbuobknQkyXBoXrFzHAe0o3mlfNtGV7JZE9KWnqpOwk",
+      "name": "Bhavya Aggrawal",
+      "position": "Executive Member",
+      "category": "",
+      "year": "Year 2",
+      "github": "",
+      "linkedin": ""
+    },
+    {
+      "image": "https://fyv51nxvng.ufs.sh/f/HcwcjQbuobknfWCecD3SLH59kKU14G6p83TQw7WZxehrifsn",
+      "name": "Lakshay Deol",
+      "position": "Executive Member",
+      "category": "",
+      "year": "Year 2",
+      "github": "",
+      "linkedin": ""
+    },
+    {
+      "image": "https://fyv51nxvng.ufs.sh/f/HcwcjQbuobknVctdMhTAy0FgPerk1c7tUDBjzbiaMRXxlN93",
+      "name": "Shravani Vaishnav",
+      "position": "Executive Member",
+      "category": "",
+      "year": "Year 2",
+      "github": "",
+      "linkedin": ""
+    },
+    {
+      "image": "https://fyv51nxvng.ufs.sh/f/HcwcjQbuobknOuf2QvikUiNpPAYTjM8L7catV1FZ6efhw5vO",
+      "name": "Tanuj",
+      "position": "Executive Member",
+      "category": "",
+      "year": "Year 2",
+      "github": "",
+      "linkedin": ""
+    },
+    {
+      "image": "https://fyv51nxvng.ufs.sh/f/HcwcjQbuobknMu7DiFmmXscKRFYfClNSahrwdiuVQI4je9GL",
+      "name": "Jatin Sood",
+      "position": "Executive Member",
+      "category": "",
+      "year": "Year 2",
+      "github": "",
+      "linkedin": ""
+    },
+    {
+      "image": "https://fyv51nxvng.ufs.sh/f/HcwcjQbuobknWVjuQhJS1mFNqjrtRbeYMJQ9XpVOBs2PdgA8",
+      "name": "Somya Verma",
+      "position": "Executive Member",
+      "category": "",
+      "year": "Year 2",
+      "github": "",
+      "linkedin": ""
+    },
+    {
+      "image": "https://fyv51nxvng.ufs.sh/f/HcwcjQbuobknyj3MCnDzDAKlJ7MrpaL1oHFGPidm90Xbhqgc",
+      "name": "Shlok Goyal",
+      "position": "Executive Member",
+      "category": "",
+      "year": "Year 2",
+      "github": "",
+      "linkedin": ""
+    },
+    {
+      "image": "https://fyv51nxvng.ufs.sh/f/HcwcjQbuobknxIB8dykMsLTbkIEHyO29v6BDjWQYaSclGeJu",
+      "name": "Saurabh",
+      "position": "Executive Member",
+      "category": "",
+      "year": "Year 2",
+      "github": "",
+      "linkedin": ""
+    },
+    {
+      "image": "https://fyv51nxvng.ufs.sh/f/HcwcjQbuobkny0RnoWzDAKlJ7MrpaL1oHFGPidm90Xbhqgct",
+      "name": "Pradyumna Sharma",
+      "position": "Executive Member",
+      "category": "",
+      "year": "Year 2",
+      "github": "",
+      "linkedin": ""
+    },
+    {
+      "image": "https://fyv51nxvng.ufs.sh/f/HcwcjQbuobkn8Ncj9ki0iOsgMJVC6k0cSFz7puAtqbTDExLl",
+      "name": "Anuj",
+      "position": "Executive Member",
+      "category": "",
+      "year": "Year 2",
+      "github": "",
+      "linkedin": ""
+    },
+    {
+      "image": "https://fyv51nxvng.ufs.sh/f/HcwcjQbuobknI13vJlHjDUh2Ep8I9TPu74LZ1onNjxez3BgV",
+      "name": "Kshitij Chauhan",
+      "position": "Executive Member",
+      "category": "",
+      "year": "Year 2",
+      "github": "",
+      "linkedin": ""
+    },
+    {
+      "image": "https://fyv51nxvng.ufs.sh/f/HcwcjQbuobknlwtAz4aD3vtcS7qHonQOE40sxY6WXGaKjgBI",
+      "name": "Mridul Ahluwalia",
+      "position": "Executive Member",
+      "category": "",
+      "year": "Year 2",
+      "github": "",
+      "linkedin": ""
+    },
+    {
+      "image": "https://fyv51nxvng.ufs.sh/f/HcwcjQbuobknSJRyBwvY7Kj35uhtyio8x6N9lOFVYkzaP1I0",
+      "name": "Pranjal Thakur",
+      "position": "Executive Member",
+      "category": "",
+      "year": "Year 2",
+      "github": "",
+      "linkedin": ""
+    },
+    {
+      "image": "https://fyv51nxvng.ufs.sh/f/HcwcjQbuobknnxrsRVZaFYKcj2zlMoVT4Cv9Ng80syPRIfE7",
+      "name": "Sarthak",
+      "position": "Executive Member",
+      "category": "",
+      "year": "Year 2",
+      "github": "",
+      "linkedin": ""
+    },
+    {
+      "image": "https://fyv51nxvng.ufs.sh/f/HcwcjQbuobknhItYKkueQVfEJKgTpbUwZim8GAjXqLaDWC7P",
+      "name": "Zulikha Banoo",
+      "position": "Executive Member",
+      "category": "",
+      "year": "Year 2",
+      "github": "",
+      "linkedin": ""
+    },
+    {
+      "image": "https://fyv51nxvng.ufs.sh/f/HcwcjQbuobknI1NpmhxjDUh2Ep8I9TPu74LZ1onNjxez3BgV",
+      "name": "Prashant Bahuguna",
+      "position": "Executive Member",
+      "category": "",
+      "year": "Year 2",
+      "github": "",
+      "linkedin": ""
+    },
+    {
+      "image": "https://fyv51nxvng.ufs.sh/f/HcwcjQbuobknEJoLa0pQc1XhOwv8opeyDMjiktGmaLUAgJdF",
+      "name": "Atul",
+      "position": "Executive Member",
+      "category": "",
+      "year": "Year 2",
+      "github": "",
+      "linkedin": ""
+    },
+    {
+      "image": "https://fyv51nxvng.ufs.sh/f/HcwcjQbuobknHlNAyrbuobknReJ90tLlM6Ka8yTB3zjNsEhf",
+      "name": "Raman Bansal",
+      "position": "Executive Member",
+      "category": "",
+      "year": "Year 2",
+      "github": "",
+      "linkedin": ""
+    },
+    {
+      "image": "https://fyv51nxvng.ufs.sh/f/HcwcjQbuobknOK8nI9ikUiNpPAYTjM8L7catV1FZ6efhw5vO",
+      "name": "Omanshi",
+      "position": "Executive Member",
+      "category": "",
+      "year": "Year 2",
+      "github": "",
+      "linkedin": ""
+    },
+    {
+      "image": "https://fyv51nxvng.ufs.sh/f/HcwcjQbuobknKkRD3WyFuS4N6AgzcnwqTC7bM8PQBm9le0VG",
+      "name": "Divyansh",
+      "position": "Executive Member",
+      "category": "",
+      "year": "Year 2",
+      "github": "",
+      "linkedin": ""
+    },
+    {
+      "image": "https://fyv51nxvng.ufs.sh/f/HcwcjQbuobknahER448qZV7ULz8bG4FnwyBghkOrDje0WA3p",
+      "name": "Saumya Jaiswal",
+      "position": "Executive Member",
+      "category": "",
+      "year": "Year 2",
+      "github": "",
+      "linkedin": ""
+    },
+    {
+      "image": "https://fyv51nxvng.ufs.sh/f/HcwcjQbuobknyjtuaHgzDAKlJ7MrpaL1oHFGPidm90Xbhqgc",
+      "name": "Prashant Thakur",
+      "position": "Executive Member",
+      "category": "Blockchain Team",
+      "year": "Year 2",
+      "github": "https://github.com/danielreed",
+      "linkedin": "https://linkedin.com/in/danielreed"
+    },
+    {
+      "image": "https://fyv51nxvng.ufs.sh/f/HcwcjQbuobkn9Ul2ZUCUV5GTupbXJImzZ30kFalfACwKB1DR",
+      "name": "Puneet Yadav",
+      "position": "Executive Member",
+      "category": "",
+      "year": "Year 2",
+      "github": "",
+      "linkedin": ""
+    },
+    {
+      "image": "https://fyv51nxvng.ufs.sh/f/HcwcjQbuobknvhtiVoe0VcO7zuFfCtMpe61jyU3rR4YmJB2n",
+      "name": "Kritika",
+      "position": "Executive Member",
+      "category": "",
+      "year": "Year 2",
+      "github": "",
+      "linkedin": ""
+    },
+    {
+      "image": "https://fyv51nxvng.ufs.sh/f/HcwcjQbuobknQeukV1rFzHAe0o3mlfNtGV7JZE9KWnqpOwk5",
+      "name": "Harsh Bhushan",
+      "position": "Executive Member",
+      "category": "",
+      "year": "Year 2",
+      "github": "",
+      "linkedin": ""
+    },
+    {
+      "image": "https://fyv51nxvng.ufs.sh/f/HcwcjQbuobkn9JUZV1CUV5GTupbXJImzZ30kFalfACwKB1DR",
+      "name": "Parthivi Pradhan",
+      "position": "Executive Member",
+      "category": "",
+      "year": "Year 2",
+      "github": "",
+      "linkedin": ""
+    }
+  ]
+}

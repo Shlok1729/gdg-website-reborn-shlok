@@ -8,6 +8,8 @@ interface ProfileCardProps {
   position: string;
   category: string;
   year: string;
+  github?: string;
+  linkedin?: string;
 }
 
 const ProfileCard: React.FC<ProfileCardProps> = ({
@@ -16,6 +18,8 @@ const ProfileCard: React.FC<ProfileCardProps> = ({
   position,
   category,
   year,
+  github,
+  linkedin,
 }) => {
   const [isHovered, setIsHovered] = useState(false);
   const [hoverOrigin, setHoverOrigin] = useState<'left' | 'center' | 'right'>(
@@ -73,20 +77,28 @@ const ProfileCard: React.FC<ProfileCardProps> = ({
         {/* Social Links */}
         <div className='w-full flex justify-center items-center pt-2'>
           <div className='flex gap-4'>
-            <a
-              href='#'
-              className='text-blue-500 hover:text-blue-700 transition duration-200'
-              aria-label='LinkedIn'
-            >
-              <Linkedin size={24} />
-            </a>
-            <a
-              href='#'
-              className='text-gray-900 dark:text-white hover:text-gray-700 dark:hover:text-gray-300 transition duration-200'
-              aria-label='GitHub'
-            >
-              <Github size={24} />
-            </a>
+            {linkedin && (
+              <a
+                href={linkedin}
+                target="_blank"
+                rel="noopener noreferrer"
+                className='text-blue-500 hover:text-blue-700 transition duration-200'
+                aria-label='LinkedIn'
+              >
+                <Linkedin size={24} />
+              </a>
+            )}
+            {github && (
+              <a
+                href={github}
+                target="_blank"
+                rel="noopener noreferrer"
+                className='text-gray-900 dark:text-white hover:text-gray-700 dark:hover:text-gray-300 transition duration-200'
+                aria-label='GitHub'
+              >
+                <Github size={24} />
+              </a>
+            )}
           </div>
         </div>
 

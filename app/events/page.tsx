@@ -43,7 +43,7 @@ export default function EventsPage() {
         <div className="relative z-10">
 
           {/* --- HEADER --- */}
-          <div className="relative w-full pt-24 pb-12 flex flex-col items-center justify-center z-10">
+          <div className="relative w-full pt-16 sm:pt-24 pb-8 sm:pb-12 px-4 flex flex-col items-center justify-center z-10">
             
             {/* Background Blur */}
             <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[80%] h-[200px] bg-gradient-to-r from-[#4285F4]/10 via-[#EA4335]/10 to-[#34A853]/10 blur-[80px] rounded-full pointer-events-none" />
@@ -56,12 +56,12 @@ export default function EventsPage() {
             >
               {/* Title with Developer Brackets */}
               <div className="relative group">
-                <div className="flex items-center justify-center gap-4 sm:gap-8">
-                  <span className="text-5xl sm:text-6xl md:text-7xl font-black text-transparent bg-clip-text bg-gradient-to-b from-blue-400 to-blue-600 opacity-40 font-mono select-none">&lt;</span>
-                  <h1 className="text-5xl sm:text-6xl md:text-7xl font-black tracking-tighter text-white drop-shadow-[0_0_30px_rgba(255,255,255,0.2)]">
+                <div className="flex items-center justify-center gap-2 sm:gap-4 md:gap-8">
+                  <span className="text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-black text-transparent bg-clip-text bg-gradient-to-b from-blue-400 to-blue-600 opacity-40 font-mono select-none">&lt;</span>
+                  <h1 className="text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-black tracking-tighter text-white drop-shadow-[0_0_30px_rgba(255,255,255,0.2)]">
                     Events
                   </h1>
-                  <span className="text-5xl sm:text-6xl md:text-7xl font-black text-transparent bg-clip-text bg-gradient-to-b from-green-400 to-green-600 opacity-40 font-mono select-none">/&gt;</span>
+                  <span className="text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-black text-transparent bg-clip-text bg-gradient-to-b from-green-400 to-green-600 opacity-40 font-mono select-none">/&gt;</span>
                 </div>
                 
                 {/* Decorative Underline Beam */}
@@ -74,7 +74,7 @@ export default function EventsPage() {
               </div>
 
               {/* Tagline */}
-              <p className="mt-6 text-base sm:text-lg text-gray-400 max-w-xl leading-relaxed font-medium">
+              <p className="mt-4 sm:mt-6 text-sm sm:text-base md:text-lg text-gray-400 max-w-xl leading-relaxed font-medium px-4 text-center">
                 Learn, Connect, and Grow. Join our upcoming
                 <span className="text-[#4285F4] mx-1">workshops</span>,
                 <span className="text-[#EA4335] mx-1">hackathons</span>, and
@@ -92,19 +92,19 @@ export default function EventsPage() {
           </div>
 
           {/* --- MAIN CONTENT --- */}
-          <div className="max-w-[1400px] mx-auto px-4 pb-20 pt-4">
-            <div className="flex flex-col gap-10">
+          <div className="max-w-[1400px] mx-auto px-3 sm:px-4 pb-12 sm:pb-20 pt-2 sm:pt-4">
+            <div className="flex flex-col gap-6 sm:gap-10">
 
               {/* --- HORIZONTAL YEAR SELECTOR (Static / Not Floating) --- */}
               {/* Removed sticky, top, z-index, and backdrop blur */}
-              <div className="w-full">
-                <div className="flex items-center justify-center md:justify-center overflow-x-auto scrollbar-hide gap-2 px-2 snap-x">
+              <div className="w-full overflow-x-auto pb-2">
+                <div className="flex items-center justify-start sm:justify-center overflow-x-auto scrollbar-hide gap-2 px-2 snap-x min-w-max sm:min-w-0">
                   {years.map((year) => (
                     <button
                       key={year}
                       onClick={() => setSelectedYear(year)}
                       // EXACT STYLE PRESERVED
-                      className={`text-left px-5.5 py-2 rounded-xl transition-colors duration-200 whitespace-nowrap snap-center ${
+                      className={`text-left px-4 sm:px-5.5 py-2 rounded-xl transition-colors duration-200 whitespace-nowrap snap-center text-sm sm:text-base ${
                         selectedYear === year
                           ? "bg-gray-300 dark:bg-neutral-600 font-bold text-black dark:text-white"
                           : "text-gray-400 hover:bg-gray-200 dark:hover:bg-neutral-700 hover:text-black dark:hover:text-white"
@@ -117,7 +117,7 @@ export default function EventsPage() {
               </div>
 
               {/* --- GRID OF SCIFI CARDS --- */}
-              <div className="w-full min-h-[50vh]">
+              <div className="w-full min-h-[40vh] sm:min-h-[50vh]">
                 <AnimatePresence mode="wait">
                   <motion.div
                     key={selectedYear}
@@ -125,7 +125,7 @@ export default function EventsPage() {
                     animate={{ opacity: 1, y: 0 }}
                     exit={{ opacity: 0, y: -10 }}
                     transition={{ duration: 0.2 }}
-                    className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 gap-10"
+                    className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 gap-4 sm:gap-6 md:gap-10"
                   >
                     {filteredEvents.length > 0 ? (
                       filteredEvents.map((event, index) => (
@@ -148,14 +148,14 @@ export default function EventsPage() {
                         </motion.div>
                       ))
                     ) : (
-                      <div className="col-span-full py-32 flex flex-col items-center justify-center text-gray-500 border border-dashed border-gray-800 rounded-3xl bg-gray-900/20">
-                        <p className="font-mono text-lg">NO SIGNAL DETECTED FOR {selectedYear}</p>
+                      <div className="col-span-full py-16 sm:py-32 flex flex-col items-center justify-center text-gray-500 border border-dashed border-gray-800 rounded-2xl sm:rounded-3xl bg-gray-900/20 mx-2">
+                        <p className="font-mono text-sm sm:text-lg text-center px-4">NO SIGNAL DETECTED FOR {selectedYear}</p>
                       </div>
                     )}
                   </motion.div>
                 </AnimatePresence>
-                <div className="min-h-screen flex flex-col items-center justify-center px-10">
-                <h2 className="text-4xl text-white font-bold mb-10">Event Highlights</h2>
+                <div className="min-h-[60vh] sm:min-h-screen flex flex-col items-center justify-center px-4 sm:px-10 py-8 sm:py-0">
+                <h2 className="text-2xl sm:text-3xl md:text-4xl text-white font-bold mb-6 sm:mb-10">Event Highlights</h2>
                 <Carousel images={photos} />
               </div>
               </div>
