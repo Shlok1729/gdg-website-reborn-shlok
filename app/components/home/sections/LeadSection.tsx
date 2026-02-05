@@ -8,20 +8,25 @@ export function SocietyLeadSection() {
     <section className="py-24 mt-0 md:mt-0 mb-0 md:mb-0 relative">
       <div className="container mx-auto px-6 lg:px-12">
         <div className="flex justify-center">
+          
           {/* Pixel Canvas Card */}
           <div className="group relative w-full max-w-8xl overflow-hidden rounded-[32px] border border-border bg-background transition-colors hover:border-[#0ea5e9]">
             {/* Pixel Canvas */}
-            <PixelCanvas
-              gap={12}
-              speed={22}
-              colors={["#e5e7eb", "#cbd5e1", "#94a3b8"]}
-            />
+            
 
             {/* Content */}
             <div className="relative z-10 grid grid-cols-1 md:grid-cols-[260px_1fr] gap-10 p-10 md:p-14">
+              <PixelCanvas
+              gap={12}
+              speed={22}
+              colors={["#e5e7eb", "#cbd5e1", "#94a3b8"]}
+              style={{position: "absolute", inset: 0, pointerEvents: "none", width: "100%", height: "100%"}}
+              
+            />
               {/* Image */}
               <div className="flex justify-center md:justify-start">
-                <div className="relative w-52 h-64 rounded-2xl overflow-hidden border border-border shadow-md">
+                <div className="relative w-52 h-64 rounded-2xl overflow-hidden border border-border shadow-lg shadow-black/40">
+
                   <Image
                     src="/assets/Soham.jpg"
                     alt="Society Lead"
